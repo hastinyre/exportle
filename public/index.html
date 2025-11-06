@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exportle Battle</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- NEW: Username Login Screen -->
+    <div id="login-screen" class="login-container">
+        <div class="login-box">
+            <h1>Exportle Battle</h1>
+            <p>Choose a username to begin</p>
+            <form id="login-form">
+                <input type="text" id="username-input" placeholder="Enter your name..." autocomplete="off" maxlength="15">
+                <button type="submit" id="join-button">Join Game</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Main Game Container (now hidden by default) -->
+    <div id="game-container" class="game-container" style="display: none;">
+        <header>
+            <h1>Exportle Battle</h1>
+            <p id="status-message">Connecting to the server...</p>
+        </header>
+        
+        <main id="game-content" style="display: none;">
+            <!-- Section for Commodity Clues -->
+            <section class="commodities-section">
+                <ul id="commodity-list" class="commodity-list"></ul>
+            </section>
+
+            <!-- Section for Both Players -->
+            <section class="players-section">
+                <!-- Player 1 Area (You) -->
+                <div id="player-self" class="player-area">
+                    <h2>You</h2>
+                    <ul class="guesses-history" id="self-guesses"></ul>
+                    <div class="guess-form-container">
+                        <form id="guess-form">
+                            <input type="text" id="guess-input" placeholder="Type a country name..." autocomplete="off">
+                            <div id="autocomplete-container"></div>
+                            <button type="submit" id="submit-button" disabled>Submit Guess</button>
+                        </form>
+                    </div>
+                </div>
+
+                <!-- Player 2 Area (Opponent) -->
+                <div id="player-opponent" class="player-area">
+                    <h2>Opponent</h2>
+                    <ul class="guesses-history" id="opponent-guesses"></ul>
+                </div>
+            </section>
+
+            <!-- Play Again Button Area -->
+            <div id="play-again-container" style="display: none;">
+                <button id="play-again-button">Play Again</button>
+            </div>
+        </main>
+    </div>
+
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="client.js"></script>
+</body>
+</html>

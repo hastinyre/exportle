@@ -1,0 +1,422 @@
+{
+  "Bangladesh": [
+    {
+      "HS4": "Knit T-shirts",
+      "Total Trade Value": 7828137769.0
+    },
+    {
+      "HS4": "Non-Knit Men's Suits",
+      "Total Trade Value": 7675738302.0
+    },
+    {
+      "HS4": "Knit Sweaters",
+      "Total Trade Value": 6680706346.0
+    },
+    {
+      "HS4": "Non-Knit Women's Suits",
+      "Total Trade Value": 5637075016.0
+    },
+    {
+      "HS4": "Knit Women's Suits",
+      "Total Trade Value": 3089575579.0
+    },
+    {
+      "HS4": "Non-Knit Men's Shirts",
+      "Total Trade Value": 2543086178.0
+    },
+    {
+      "HS4": "Knit Women's Undergarments",
+      "Total Trade Value": 1357408433.0
+    },
+    {
+      "HS4": "Knit Men's Shirts",
+      "Total Trade Value": 1350785649.0
+    },
+    {
+      "HS4": "Non-Knit Men's Coats",
+      "Total Trade Value": 1220044390.0
+    },
+    {
+      "HS4": "Knit Men's Suits",
+      "Total Trade Value": 1094895766.0
+    }
+  ],
+  "Brazil": [
+    {
+      "HS4": "Soybeans",
+      "Total Trade Value": 53622106436.0
+    },
+    {
+      "HS4": "Crude Petroleum",
+      "Total Trade Value": 43763316890.0
+    },
+    {
+      "HS4": "Iron Ore",
+      "Total Trade Value": 33477633620.0
+    },
+    {
+      "HS4": "Raw Sugar",
+      "Total Trade Value": 17925036958.0
+    },
+    {
+      "HS4": "Corn",
+      "Total Trade Value": 13867461297.0
+    },
+    {
+      "HS4": "Soybean Meal",
+      "Total Trade Value": 11527849047.0
+    },
+    {
+      "HS4": "Refined Petroleum",
+      "Total Trade Value": 10790497421.0
+    },
+    {
+      "HS4": "Poultry Meat",
+      "Total Trade Value": 8984861117.0
+    },
+    {
+      "HS4": "Frozen Bovine Meat",
+      "Total Trade Value": 8563419732.999999
+    },
+    {
+      "HS4": "Coffee",
+      "Total Trade Value": 7833661180.0
+    }
+  ],
+  "China": [
+    {
+      "HS4": "Telephones",
+      "Total Trade Value": 331198787579.0
+    },
+    {
+      "HS4": "Computers",
+      "Total Trade Value": 177079058050.0
+    },
+    {
+      "HS4": "Integrated Circuits",
+      "Total Trade Value": 144459408301.0
+    },
+    {
+      "HS4": "Cars",
+      "Total Trade Value": 76102496830.0
+    },
+    {
+      "HS4": "Electric Batteries",
+      "Total Trade Value": 75653080606.0
+    },
+    {
+      "HS4": "Semiconductor Devices",
+      "Total Trade Value": 61465814188.0
+    },
+    {
+      "HS4": "Electrical Transformers",
+      "Total Trade Value": 51543115064.0
+    },
+    {
+      "HS4": "Motor Vehicles; parts & accessories",
+      "Total Trade Value": 50966825277.0
+    },
+    {
+      "HS4": "Refined Petroleum",
+      "Total Trade Value": 45718567937.0
+    },
+    {
+      "HS4": "Other toys",
+      "Total Trade Value": 39587336299.0
+    }
+  ],
+  "Ethiopia": [
+    {
+      "HS4": "Coffee",
+      "Total Trade Value": 1275044472.0
+    },
+    {
+      "HS4": "Dried Legumes",
+      "Total Trade Value": 333965024.0
+    },
+    {
+      "HS4": "Other Oily Seeds",
+      "Total Trade Value": 271115296.0
+    },
+    {
+      "HS4": "Cut Flowers",
+      "Total Trade Value": 257658130.0
+    },
+    {
+      "HS4": "Gold",
+      "Total Trade Value": 232351543.0
+    },
+    {
+      "HS4": "Other Vegetables",
+      "Total Trade Value": 187101953.0
+    },
+    {
+      "HS4": "Soybeans",
+      "Total Trade Value": 134679118.0
+    },
+    {
+      "HS4": "Aircraft parts (gliders, balloons, and powered aircraft)",
+      "Total Trade Value": 85239327.0
+    },
+    {
+      "HS4": "Non-Knit Men's Suits",
+      "Total Trade Value": 62387328.0
+    },
+    {
+      "HS4": "Sheep and Goat Meat",
+      "Total Trade Value": 56154816.0
+    }
+  ],
+  "India": [
+    {
+      "HS4": "Refined Petroleum",
+      "Total Trade Value": 79546197528.0
+    },
+    {
+      "HS4": "Packaged Medicaments",
+      "Total Trade Value": 21463383351.0
+    },
+    {
+      "HS4": "Diamonds",
+      "Total Trade Value": 20396080855.0
+    },
+    {
+      "HS4": "Telephones",
+      "Total Trade Value": 19088193882.0
+    },
+    {
+      "HS4": "Jewellery",
+      "Total Trade Value": 12820999273.0
+    },
+    {
+      "HS4": "Rice",
+      "Total Trade Value": 10993282905.0
+    },
+    {
+      "HS4": "Motor Vehicles; parts & accessories",
+      "Total Trade Value": 7384990304.0
+    },
+    {
+      "HS4": "Cars",
+      "Total Trade Value": 7313385637.0
+    },
+    {
+      "HS4": "Raw Aluminium",
+      "Total Trade Value": 6039584276.0
+    },
+    {
+      "HS4": "Nitrogen Heterocyclic Compounds",
+      "Total Trade Value": 5737155542.0
+    }
+  ],
+  "Indonesia": [
+    {
+      "HS4": "Coal Briquettes",
+      "Total Trade Value": 37821917370.0
+    },
+    {
+      "HS4": "Palm Oil",
+      "Total Trade Value": 24397583972.0
+    },
+    {
+      "HS4": "Ferroalloys",
+      "Total Trade Value": 15175212047.0
+    },
+    {
+      "HS4": "Petroleum Gas",
+      "Total Trade Value": 9106300865.0
+    },
+    {
+      "HS4": "Lignite",
+      "Total Trade Value": 8997490067.0
+    },
+    {
+      "HS4": "Copper Ore",
+      "Total Trade Value": 8427132832.0
+    },
+    {
+      "HS4": "Nickel Mattes",
+      "Total Trade Value": 7284980545.0
+    },
+    {
+      "HS4": "Cars",
+      "Total Trade Value": 6877374643.0
+    },
+    {
+      "HS4": "Large Flat-Rolled Stainless Steel",
+      "Total Trade Value": 5773657503.0
+    },
+    {
+      "HS4": "Industrial Fatty Acids, Oils and Alcohols",
+      "Total Trade Value": 5438852127.0
+    }
+  ],
+  "Nigeria": [
+    {
+      "HS4": "Crude Petroleum",
+      "Total Trade Value": 45568423236.0
+    },
+    {
+      "HS4": "Petroleum Gas",
+      "Total Trade Value": 8255228285.0
+    },
+    {
+      "HS4": "Gold",
+      "Total Trade Value": 1535831879.0000002
+    },
+    {
+      "HS4": "Nitrogenous Fertilizers",
+      "Total Trade Value": 1068859660.0
+    },
+    {
+      "HS4": "Cocoa Beans",
+      "Total Trade Value": 753048957.0
+    },
+    {
+      "HS4": "Refined Petroleum",
+      "Total Trade Value": 704697328.0
+    },
+    {
+      "HS4": "Coconuts, Brazil Nuts, and Cashews",
+      "Total Trade Value": 380039825.0
+    },
+    {
+      "HS4": "Other Oily Seeds",
+      "Total Trade Value": 341791512.0
+    },
+    {
+      "HS4": "Other Mineral",
+      "Total Trade Value": 292616686.0
+    },
+    {
+      "HS4": "Raw Aluminium",
+      "Total Trade Value": 253197215.0
+    }
+  ],
+  "Pakistan": [
+    {
+      "HS4": "House Linens",
+      "Total Trade Value": 3991836078.0
+    },
+    {
+      "HS4": "Refined Petroleum",
+      "Total Trade Value": 2758594283.0
+    },
+    {
+      "HS4": "Rice",
+      "Total Trade Value": 2632016598.0
+    },
+    {
+      "HS4": "Non-Knit Men's Suits",
+      "Total Trade Value": 2182562439.0
+    },
+    {
+      "HS4": "Knit Sweaters",
+      "Total Trade Value": 1445281810.0
+    },
+    {
+      "HS4": "Non-Knit Women's Suits",
+      "Total Trade Value": 1334864678.0
+    },
+    {
+      "HS4": "Non-Retail Pure Cotton Yarn",
+      "Total Trade Value": 1016622456.0
+    },
+    {
+      "HS4": "Heavy Pure Woven Cotton",
+      "Total Trade Value": 795365710.0
+    },
+    {
+      "HS4": "Refined Copper",
+      "Total Trade Value": 714377932.0
+    },
+    {
+      "HS4": "Knit T-shirts",
+      "Total Trade Value": 685756713.0
+    }
+  ],
+  "Russia": [
+    {
+      "HS4": "Crude Petroleum",
+      "Total Trade Value": 121706937916.99998
+    },
+    {
+      "HS4": "Refined Petroleum",
+      "Total Trade Value": 52087319673.0
+    },
+    {
+      "HS4": "Petroleum Gas",
+      "Total Trade Value": 38966677173.0
+    },
+    {
+      "HS4": "Coal Briquettes",
+      "Total Trade Value": 27229051420.0
+    },
+    {
+      "HS4": "Gold",
+      "Total Trade Value": 13589580150.0
+    },
+    {
+      "HS4": "Wheat",
+      "Total Trade Value": 10997063914.0
+    },
+    {
+      "HS4": "Raw Aluminium",
+      "Total Trade Value": 6952018307.0
+    },
+    {
+      "HS4": "Platinum",
+      "Total Trade Value": 6835521715.0
+    },
+    {
+      "HS4": "Semi-Finished Iron",
+      "Total Trade Value": 6754752772.0
+    },
+    {
+      "HS4": "Mixed Mineral or Chemical Fertilizers",
+      "Total Trade Value": 5578029288.0
+    }
+  ],
+  "United States": [
+    {
+      "HS4": "Crude Petroleum",
+      "Total Trade Value": 124155196928.0
+    },
+    {
+      "HS4": "Refined Petroleum",
+      "Total Trade Value": 115840993023.0
+    },
+    {
+      "HS4": "Petroleum Gas",
+      "Total Trade Value": 80680571266.0
+    },
+    {
+      "HS4": "Cars",
+      "Total Trade Value": 66859723156.0
+    },
+    {
+      "HS4": "Gas Turbines",
+      "Total Trade Value": 52584897488.0
+    },
+    {
+      "HS4": "Vaccines, blood, antisera, toxins and cultures",
+      "Total Trade Value": 49562359200.0
+    },
+    {
+      "HS4": "Integrated Circuits",
+      "Total Trade Value": 42127623351.0
+    },
+    {
+      "HS4": "Motor Vehicles; parts & accessories",
+      "Total Trade Value": 41438202793.0
+    },
+    {
+      "HS4": "Planes, Helicopters, and/or Spacecraft",
+      "Total Trade Value": 39329595257.0
+    },
+    {
+      "HS4": "Packaged Medicaments",
+      "Total Trade Value": 38267759587.0
+    }
+  ]
+}
