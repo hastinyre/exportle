@@ -1,38 +1,27 @@
-// Initialize socket but do not connect automatically.
-// Connection will be established after the user enters a username.
 const socket = io({ autoConnect: false });
 
-// --- DOM Element Selection ---
-// Login Screen
 const loginScreen = document.getElementById('login-screen');
 const loginForm = document.getElementById('login-form');
 const usernameInput = document.getElementById('username-input');
-const joinButton = document.getElementById('join-button');
-// Main Game
 const gameContainer = document.getElementById('game-container');
 const statusMessage = document.getElementById('status-message');
 const gameContent = document.getElementById('game-content');
 const commodityList = document.getElementById('commodity-list');
-// Player Areas
 const selfPlayerArea = document.getElementById('player-self');
 const opponentPlayerArea = document.getElementById('player-opponent');
 const selfGuessesList = document.getElementById('self-guesses');
 const opponentGuessesList = document.getElementById('opponent-guesses');
-// Form Elements
 const guessForm = document.getElementById('guess-form');
 const guessInput = document.getElementById('guess-input');
 const submitButton = document.getElementById('submit-button');
 const autocompleteContainer = document.getElementById('autocomplete-container');
-// Play Again Elements
 const playAgainContainer = document.getElementById('play-again-container');
 const playAgainButton = document.getElementById('play-again-button');
 
-// --- State Management ---
-let myPlayerId = null; // This will be set on login
+let myPlayerId = null;
 let allCountries = [];
 let selectedCountry = null;
 
-// --- UI Update Functions ---
 function updateCommodities(commodities) {
     commodityList.innerHTML = '';
     commodities.forEach(item => {
@@ -62,7 +51,6 @@ function addGuessToHistory(result) {
     }
 }
 
-// --- Autocomplete Functions ---
 function updateAutocomplete(inputText) {
     autocompleteContainer.innerHTML = '';
     if (!inputText) return;
@@ -85,96 +73,95 @@ function updateAutocomplete(inputText) {
     autocompleteContainer.appendChild(list);
 }
 
-// --- Socket Event Listeners ---
-// Note: We listen to generic 'message' event from Cloudflare DO, not custom events
 socket.on('message', (data) => {
-    const { type, payload } = JSON.parse(data);
+    try {
+        const { type, payload } = JSON.parse(data);
 
-    switch(type) {
-        case 'gameStart':
-            allCountries = payload.allCountries ? payload.allCountries.sort() : [];
-            const myUsername = payload.players[myPlayerId];
-            const opponentId = Object.keys(payload.players).find(id => id !== myPlayerId);
-            const opponentUsername = payload.players[opponentId];
-            
-            selfPlayerArea.querySelector('h2').textContent = `You (${myUsername})`;
-            opponentPlayerArea.querySelector('h2').textContent = `Opponent (${opponentUsername})`;
-            
-            statusMessage.textContent = 'Opponent found!';
-            gameContent.style.display = 'block';
-            break;
+        switch(type) {
+            case 'gameStart':
+                allCountries = payload.allCountries ? payload.allCountries.sort() : [];
+                const myUsername = payload.players[myPlayerId];
+                const opponentId = Object.keys(payload.players).find(id => id !== myPlayerId);
+                const opponentUsername = payload.players[opponentId];
+                
+                selfPlayerArea.querySelector('h2').textContent = `You (${myUsername})`;
+                opponentPlayerArea.querySelector('h2').textContent = `Opponent (${opponentUsername})`;
+                
+                statusMessage.textContent = 'Opponent found!';
+                gameContent.style.display = 'block';
+                break;
 
-        case 'newRound':
-            statusMessage.textContent = "Guess the country!";
-            statusMessage.className = '';
-            updateCommodities(payload.commodities);
-            selfGuessesList.innerHTML = '';
-            opponentGuessesList.innerHTML = '';
-            guessInput.value = '';
-            guessInput.disabled = false;
-            submitButton.disabled = true;
-            selectedCountry = null;
-            playAgainContainer.style.display = 'none';
-            playAgainButton.disabled = false;
-            playAgainButton.textContent = 'Play Again';
-            break;
-
-        case 'guessResult':
-            addGuessToHistory(payload);
-            if (payload.guesserId === myPlayerId) {
-                guessInput.disabled = false;
+            case 'newRound':
+                statusMessage.textContent = "Guess the country!";
+                statusMessage.className = '';
+                updateCommodities(payload.commodities);
+                selfGuessesList.innerHTML = '';
+                opponentGuessesList.innerHTML = '';
                 guessInput.value = '';
-                guessInput.focus();
-            }
-            break;
+                guessInput.disabled = false;
+                submitButton.disabled = true;
+                selectedCountry = null;
+                playAgainContainer.style.display = 'none';
+                playAgainButton.disabled = false;
+                playAgainButton.textContent = 'Play Again';
+                break;
 
-        case 'roundOver':
-            const { winnerId, winnerName, answer } = payload;
-            let message = '';
-            if (winnerId === myPlayerId) {
-                message = `You win! The country was ${answer}.`;
-                statusMessage.className = 'winner-announcement win-message';
-            } else {
-                message = `${winnerName} wins! The country was ${answer}.`;
+            case 'guessResult':
+                addGuessToHistory(payload);
+                if (payload.guesserId === myPlayerId) {
+                    guessInput.disabled = false;
+                    guessInput.value = '';
+                    guessInput.focus();
+                }
+                break;
+
+            case 'roundOver':
+                const { winnerId, winnerName, answer } = payload;
+                let message = '';
+                if (winnerId === myPlayerId) {
+                    message = `You win! The country was ${answer}.`;
+                    statusMessage.className = 'winner-announcement win-message';
+                } else {
+                    message = `${winnerName} wins! The country was ${answer}.`;
+                    statusMessage.className = 'winner-announcement lose-message';
+                }
+                statusMessage.textContent = message;
+                guessInput.disabled = true;
+                submitButton.disabled = true;
+                playAgainContainer.style.display = 'block';
+                break;
+
+            case 'opponentLeft':
+                statusMessage.textContent = payload.message;
                 statusMessage.className = 'winner-announcement lose-message';
-            }
-            statusMessage.textContent = message;
-            guessInput.disabled = true;
-            submitButton.disabled = true;
-            playAgainContainer.style.display = 'block';
-            break;
-
-        case 'opponentLeft':
-            statusMessage.textContent = payload.message;
-            statusMessage.className = 'winner-announcement lose-message';
-            guessInput.disabled = true;
-            submitButton.disabled = true;
-            autocompleteContainer.innerHTML = '';
-            playAgainContainer.style.display = 'none';
-            break;
+                guessInput.disabled = true;
+                submitButton.disabled = true;
+                autocompleteContainer.innerHTML = '';
+                playAgainContainer.style.display = 'none';
+                break;
+        }
+    } catch(e) {
+        console.error("Failed to parse message from server:", data);
     }
 });
 
 socket.on('disconnect', () => {
     loginScreen.style.display = 'flex';
     gameContainer.style.display = 'none';
-    gameContent.style.display = 'none'; // Hide game board on disconnect
+    gameContent.style.display = 'none';
     statusMessage.textContent = 'Connection lost. Please reconnect.';
 });
 
-// --- Event Listeners for Forms ---
 loginForm.addEventListener('submit', (e) => {
     e.preventDefault();
     const username = usernameInput.value;
     if (username.trim()) {
         myPlayerId = Math.random().toString(36).substr(2, 9);
-        
-        // This is your specific Cloudflare Worker URL
         const wsUrl = `wss://exportle-game-server.hastinyre.workers.dev?playerId=${myPlayerId}&username=${encodeURIComponent(username)}`;
         
-        // Disconnect any old connection and reconnect with the new URL
         if(socket.connected) socket.disconnect();
         socket.io.uri = wsUrl;
+        socket.io.opts.transports = ["websocket"]; // Force WebSocket transport only
         socket.connect();
         
         loginScreen.style.display = 'none';
@@ -196,14 +183,10 @@ document.addEventListener('click', (e) => {
     }
 });
 
-// We now send messages as a JSON string with a 'type'
 guessForm.addEventListener('submit', (e) => {
     e.preventDefault();
     if (selectedCountry) {
-        socket.send(JSON.stringify({
-            type: 'submitGuess',
-            payload: { guess: selectedCountry }
-        }));
+        socket.send(JSON.stringify({ type: 'submitGuess', payload: { guess: selectedCountry } }));
         guessInput.disabled = true;
         submitButton.disabled = true;
     }
