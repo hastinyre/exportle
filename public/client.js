@@ -1,5 +1,7 @@
-const socket = io({ autoConnect: false });
+// No more Socket.IO library! We will define the socket when the user logs in.
+let socket;
 
+// --- DOM Element Selection ---
 const loginScreen = document.getElementById('login-screen');
 const loginForm = document.getElementById('login-form');
 const usernameInput = document.getElementById('username-input');
@@ -18,10 +20,12 @@ const autocompleteContainer = document.getElementById('autocomplete-container');
 const playAgainContainer = document.getElementById('play-again-container');
 const playAgainButton = document.getElementById('play-again-button');
 
+// --- State Management ---
 let myPlayerId = null;
 let allCountries = [];
 let selectedCountry = null;
 
+// --- UI Update Functions (These do not need to change) ---
 function updateCommodities(commodities) {
     commodityList.innerHTML = '';
     commodities.forEach(item => {
@@ -36,10 +40,8 @@ function addGuessToHistory(result) {
     const { guesserId, guesserName, guess, distance } = result;
     const guessItem = document.createElement('li');
     guessItem.className = 'guess-item';
-    
     let distanceHtml = (guesserId === myPlayerId) ? `<span class="guess-distance">${distance}</span>` : '';
     let nameHtml = (guesserId === myPlayerId) ? guess : `${guesserName}: ${guess}`;
-    
     guessItem.innerHTML = `<span class="guess-name">${nameHtml}</span> ${distanceHtml}`;
 
     if (guesserId === myPlayerId) {
@@ -73,85 +75,7 @@ function updateAutocomplete(inputText) {
     autocompleteContainer.appendChild(list);
 }
 
-socket.on('message', (data) => {
-    try {
-        const { type, payload } = JSON.parse(data);
-
-        switch(type) {
-            case 'gameStart':
-                allCountries = payload.allCountries ? payload.allCountries.sort() : [];
-                const myUsername = payload.players[myPlayerId];
-                const opponentId = Object.keys(payload.players).find(id => id !== myPlayerId);
-                const opponentUsername = payload.players[opponentId];
-                
-                selfPlayerArea.querySelector('h2').textContent = `You (${myUsername})`;
-                opponentPlayerArea.querySelector('h2').textContent = `Opponent (${opponentUsername})`;
-                
-                statusMessage.textContent = 'Opponent found!';
-                gameContent.style.display = 'block';
-                break;
-
-            case 'newRound':
-                statusMessage.textContent = "Guess the country!";
-                statusMessage.className = '';
-                updateCommodities(payload.commodities);
-                selfGuessesList.innerHTML = '';
-                opponentGuessesList.innerHTML = '';
-                guessInput.value = '';
-                guessInput.disabled = false;
-                submitButton.disabled = true;
-                selectedCountry = null;
-                playAgainContainer.style.display = 'none';
-                playAgainButton.disabled = false;
-                playAgainButton.textContent = 'Play Again';
-                break;
-
-            case 'guessResult':
-                addGuessToHistory(payload);
-                if (payload.guesserId === myPlayerId) {
-                    guessInput.disabled = false;
-                    guessInput.value = '';
-                    guessInput.focus();
-                }
-                break;
-
-            case 'roundOver':
-                const { winnerId, winnerName, answer } = payload;
-                let message = '';
-                if (winnerId === myPlayerId) {
-                    message = `You win! The country was ${answer}.`;
-                    statusMessage.className = 'winner-announcement win-message';
-                } else {
-                    message = `${winnerName} wins! The country was ${answer}.`;
-                    statusMessage.className = 'winner-announcement lose-message';
-                }
-                statusMessage.textContent = message;
-                guessInput.disabled = true;
-                submitButton.disabled = true;
-                playAgainContainer.style.display = 'block';
-                break;
-
-            case 'opponentLeft':
-                statusMessage.textContent = payload.message;
-                statusMessage.className = 'winner-announcement lose-message';
-                guessInput.disabled = true;
-                submitButton.disabled = true;
-                autocompleteContainer.innerHTML = '';
-                playAgainContainer.style.display = 'none';
-                break;
-        }
-    } catch(e) {
-        console.error("Failed to parse message from server:", data);
-    }
-});
-
-socket.on('disconnect', () => {
-    loginScreen.style.display = 'flex';
-    gameContainer.style.display = 'none';
-    gameContent.style.display = 'none';
-    statusMessage.textContent = 'Connection lost. Please reconnect.';
-});
-
+// --- Event Listener for Login Form ---
 loginForm.addEventListener('submit', (e) => {
     e.preventDefault();
     const username = usernameInput.value;
@@ -159,17 +83,99 @@ loginForm.addEventListener('submit', (e) => {
         myPlayerId = Math.random().toString(36).substr(2, 9);
         const wsUrl = `wss://exportle-game-server.hastinyre.workers.dev?playerId=${myPlayerId}&username=${encodeURIComponent(username)}`;
         
-        if(socket.connected) socket.disconnect();
-        socket.io.uri = wsUrl;
-        socket.io.opts.transports = ["websocket"]; // Force WebSocket transport only
-        socket.connect();
+        // Create the native WebSocket connection
+        socket = new WebSocket(wsUrl);
+
+        // --- Attach Event Listeners to the new socket ---
+        socket.onopen = () => {
+            console.log("WebSocket connection established!");
+            statusMessage.textContent = 'Looking for a game...';
+        };
+
+        socket.onmessage = (event) => {
+            try {
+                const { type, payload } = JSON.parse(event.data);
+                switch(type) {
+                    case 'gameStart':
+                        allCountries = payload.allCountries ? payload.allCountries.sort() : [];
+                        const myUsername = payload.players[myPlayerId];
+                        const opponentId = Object.keys(payload.players).find(id => id !== myPlayerId);
+                        const opponentUsername = payload.players[opponentId];
+                        selfPlayerArea.querySelector('h2').textContent = `You (${myUsername})`;
+                        opponentPlayerArea.querySelector('h2').textContent = `Opponent (${opponentUsername})`;
+                        statusMessage.textContent = 'Opponent found!';
+                        gameContent.style.display = 'block';
+                        break;
+                    // ... (other cases are the same)
+                     case 'newRound':
+                        statusMessage.textContent = "Guess the country!";
+                        statusMessage.className = '';
+                        updateCommodities(payload.commodities);
+                        selfGuessesList.innerHTML = '';
+                        opponentGuessesList.innerHTML = '';
+                        guessInput.value = '';
+                        guessInput.disabled = false;
+                        submitButton.disabled = true;
+                        selectedCountry = null;
+                        playAgainContainer.style.display = 'none';
+                        playAgainButton.disabled = false;
+                        playAgainButton.textContent = 'Play Again';
+                        break;
+                    case 'guessResult':
+                        addGuessToHistory(payload);
+                        if (payload.guesserId === myPlayerId) {
+                            guessInput.disabled = false;
+                            guessInput.value = '';
+                            guessInput.focus();
+                        }
+                        break;
+                    case 'roundOver':
+                        const { winnerId, winnerName, answer } = payload;
+                        let message = '';
+                        if (winnerId === myPlayerId) {
+                            message = `You win! The country was ${answer}.`;
+                            statusMessage.className = 'winner-announcement win-message';
+                        } else {
+                            message = `${winnerName} wins! The country was ${answer}.`;
+                            statusMessage.className = 'winner-announcement lose-message';
+                        }
+                        statusMessage.textContent = message;
+                        guessInput.disabled = true;
+                        submitButton.disabled = true;
+                        playAgainContainer.style.display = 'block';
+                        break;
+                    case 'opponentLeft':
+                        statusMessage.textContent = payload.message;
+                        statusMessage.className = 'winner-announcement lose-message';
+                        guessInput.disabled = true;
+                        submitButton.disabled = true;
+                        autocompleteContainer.innerHTML = '';
+                        playAgainContainer.style.display = 'none';
+                        break;
+                }
+            } catch(err) {
+                console.error("Failed to parse message from server:", event.data);
+            }
+        };
+
+        socket.onclose = () => {
+            loginScreen.style.display = 'flex';
+            gameContainer.style.display = 'none';
+            gameContent.style.display = 'none';
+            statusMessage.textContent = 'Connection lost. Please reconnect.';
+        };
         
+        socket.onerror = (error) => {
+            console.error("WebSocket Error:", error);
+             statusMessage.textContent = 'Could not connect to the server.';
+        };
+
         loginScreen.style.display = 'none';
         gameContainer.style.display = 'block';
-        statusMessage.textContent = 'Looking for a game...';
     }
 });
 
+// --- Other Event Listeners ---
 guessInput.addEventListener('focus', () => updateAutocomplete(guessInput.value));
 guessInput.addEventListener('input', () => {
     updateAutocomplete(guessInput.value);
@@ -185,7 +191,7 @@ document.addEventListener('click', (e) => {
 
 guessForm.addEventListener('submit', (e) => {
     e.preventDefault();
-    if (selectedCountry) {
+    if (selectedCountry && socket && socket.readyState === WebSocket.OPEN) {
         socket.send(JSON.stringify({ type: 'submitGuess', payload: { guess: selectedCountry } }));
         guessInput.disabled = true;
         submitButton.disabled = true;
@@ -193,7 +199,9 @@ guessForm.addEventListener('submit', (e) => {
 });
 
 playAgainButton.addEventListener('click', () => {
-    playAgainButton.disabled = true;
-    playAgainButton.textContent = 'Waiting for opponent...';
-    socket.send(JSON.stringify({ type: 'requestPlayAgain' }));
+    if (socket && socket.readyState === WebSocket.OPEN) {
+        playAgainButton.disabled = true;
+        playAgainButton.textContent = 'Waiting for opponent...';
+        socket.send(JSON.stringify({ type: 'requestPlayAgain' }));
+    }
 });
