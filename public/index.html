@@ -7,7 +7,6 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <!-- NEW: Username Login Screen -->
     <div id="login-screen" class="login-container">
         <div class="login-box">
             <h1>Exportle Battle</h1>
@@ -18,23 +17,16 @@
             </form>
         </div>
     </div>
-
-    <!-- Main Game Container (now hidden by default) -->
     <div id="game-container" class="game-container" style="display: none;">
         <header>
             <h1>Exportle Battle</h1>
             <p id="status-message">Connecting to the server...</p>
         </header>
-        
         <main id="game-content" style="display: none;">
-            <!-- Section for Commodity Clues -->
             <section class="commodities-section">
                 <ul id="commodity-list" class="commodity-list"></ul>
             </section>
-
-            <!-- Section for Both Players -->
             <section class="players-section">
-                <!-- Player 1 Area (You) -->
                 <div id="player-self" class="player-area">
                     <h2>You</h2>
                     <ul class="guesses-history" id="self-guesses"></ul>
@@ -46,21 +38,16 @@
                         </form>
                     </div>
                 </div>
-
-                <!-- Player 2 Area (Opponent) -->
                 <div id="player-opponent" class="player-area">
                     <h2>Opponent</h2>
                     <ul class="guesses-history" id="opponent-guesses"></ul>
                 </div>
             </section>
-
-            <!-- Play Again Button Area -->
             <div id="play-again-container" style="display: none;">
                 <button id="play-again-button">Play Again</button>
             </div>
         </main>
     </div>
-
     <script src="/socket.io/socket.io.js"></script>
     <script src="client.js"></script>
 </body>
