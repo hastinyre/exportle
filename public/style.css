@@ -1,1 +1,47 @@
-.login-container{position:fixed;top:0;left:0;width:100%;height:100%;background-color:var(--background-color);display:flex;justify-content:center;align-items:center;z-index:2000;padding:10px;box-sizing:border-box}.login-box{width:100%;max-width:400px;padding:30px;background-color:var(--container-bg);border-radius:8px;box-shadow:0 4px 12px rgba(0,0,0,.1);text-align:center}.login-box h1{margin:0 0 10px 0}.login-box p{margin:0 0 20px 0;color:#6c757d}#username-input{width:100%;padding:12px;font-size:1.1em;border:1px solid var(--border-color);border-radius:4px;box-sizing:border-box;text-align:center;margin-bottom:15px}#join-button{width:100%;padding:12px;font-size:1.1em;font-weight:700;color:#fff;background-color:var(--accent-color);border:none;border-radius:4px;cursor:pointer}:root{--background-color:#f0f2f5;--container-bg:#fff;--text-color:#333;--accent-color:#007bff;--border-color:#dee2e6;--guess-bg:#e9ecef;--win-color:#28a745;--lose-color:#dc3545}body{margin:0;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif;background-color:var(--background-color);color:var(--text-color);display:flex;justify-content:center;align-items:flex-start;min-height:100vh;padding:10px;box-sizing:border-box}.game-container{width:100%;max-width:400px;background-color:var(--container-bg);border-radius:8px;box-shadow:0 4px 12px rgba(0,0,0,.1);padding:20px;box-sizing:border-box}header{text-align:center;border-bottom:1px solid var(--border-color);padding-bottom:15px;margin-bottom:20px}header h1{margin:0;font-size:1.8em}header p{margin:5px 0 0;color:#6c757d;padding:0;border-radius:0;font-size:1em;font-weight:400}.commodities-section{margin-bottom:20px}.commodity-list{list-style:none;padding:0;margin:0;border:1px solid var(--border-color);border-radius:6px}.commodity-item{display:flex;justify-content:space-between;padding:12px 15px;font-size:1.1em}.commodity-item:not(:last-child){border-bottom:1px solid var(--border-color)}.commodity-name{font-weight:500}.commodity-value{font-weight:700;color:var(--accent-color)}.players-section{display:flex;flex-direction:column;gap:20px}.player-area{border:1px solid var(--border-color);border-radius:6px;padding:15px}.player-area h2{margin:0 0 15px 0;font-size:1.2em;text-align:center}.guesses-history{list-style:none;padding:0;margin:0;height:150px;overflow-y:auto;border:1px solid var(--border-color);border-radius:4px;background-color:#f8f9fa}.guess-item{display:flex;justify-content:space-between;padding:8px 10px}.guess-item:not(:last-child){border-bottom:1px solid var(--border-color)}.guess-item .guess-name{font-weight:500}.guess-item .guess-distance{font-weight:700}.winner-announcement{text-align:center;padding:10px;margin:0;border-radius:4px;font-size:1.2em;font-weight:700}.win-message{color:#fff;background-color:var(--win-color)}.lose-message{color:#fff;background-color:var(--lose-color)}.guess-form-container{margin-top:15px;position:relative}.guess-input{width:100%;padding:10px;font-size:1em;border:1px solid var(--border-color);border-radius:4px;box-sizing:border-box}.submit-button{width:100%;padding:10px;font-size:1em;font-weight:700;color:#fff;background-color:var(--accent-color);border:none;border-radius:4px;cursor:pointer;margin-top:10px;transition:background-color .2s}.submit-button:hover{background-color:#0056b3}.submit-button:disabled{background-color:#a0a0a0;cursor:not-allowed}.autocomplete-list{list-style:none;padding:0;margin:2px 0 0 0;position:absolute;width:100%;max-height:200px;overflow-y:auto;border:1px solid var(--border-color);border-radius:4px;background-color:var(--container-bg);z-index:1000}.autocomplete-item{padding:10px;cursor:pointer}.autocomplete-item:hover,.autocomplete-item.active{background-color:var(--guess-bg)}#play-again-container{margin-top:20px;text-align:center}#play-again-button{width:100%;max-width:250px;padding:12px;font-size:1.1em;font-weight:700;color:#fff;background-color:var(--win-color);border:none;border-radius:4px;cursor:pointer;transition:background-color .2s}#play-again-button:hover{background-color:#218838}#play-again-button:disabled{background-color:#a0a0a0;cursor:not-allowed}@media (min-width:768px){.game-container{max-width:800px}.players-section{flex-direction:row;justify-content:space-between;align-items:flex-start}.player-area{width:48%}}
+/* --- Login Screen Styles --- */
+.login-container{position:fixed;top:0;left:0;width:100%;height:100%;background-color:var(--background-color);display:flex;justify-content:center;align-items:center;z-index:2000;padding:10px;box-sizing:border-box}.login-box{width:100%;max-width:400px;padding:30px;background-color:var(--container-bg);border-radius:8px;box-shadow:0 4px 12px rgba(0,0,0,.1);text-align:center}.login-box h1{margin:0 0 10px 0}.login-box p{margin:0 0 20px 0;color:#6c757d}#username-input{width:100%;padding:12px;font-size:1.1em;border:1px solid var(--border-color);border-radius:4px;box-sizing:border-box;text-align:center;margin-bottom:15px}#join-button{width:100%;padding:12px;font-size:1.1em;font-weight:700;color:#fff;background-color:var(--accent-color);border:none;border-radius:4px;cursor:pointer}
+
+/* --- Core Styles --- */
+:root{--background-color:#f0f2f5;--container-bg:#fff;--text-color:#333;--accent-color:#007bff;--border-color:#dee2e6;--guess-bg:#e9ecef;--win-color:#28a745;--lose-color:#dc3545;--my-guess-bg:#007bff;--opponent-guess-bg:#e9ecef}
+body{margin:0;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif;background-color:var(--background-color);color:var(--text-color);display:flex;justify-content:center;align-items:flex-start;min-height:100vh;padding:10px;box-sizing:border-box}
+.game-container{width:100%;max-width:500px;background-color:var(--container-bg);border-radius:8px;box-shadow:0 4px 12px rgba(0,0,0,.1);padding:20px;box-sizing:border-box;transition:max-width .3s ease}
+header{text-align:center;border-bottom:1px solid var(--border-color);padding-bottom:15px;margin-bottom:20px}
+header h1{margin:0;font-size:1.6em}
+header p{margin:5px 0 0;color:#6c757d;padding:0;border-radius:0;font-size:1em;font-weight:400}
+.commodities-section{margin-bottom:20px}
+.commodity-list{list-style:none;padding:0;margin:0;border:1px solid var(--border-color);border-radius:6px}
+.commodity-item{display:flex;justify-content:space-between;padding:12px 15px;font-size:1.1em;transition:background-color .3s}
+.commodity-item:not(:last-child){border-bottom:1px solid var(--border-color)}
+.commodity-name{font-weight:500}
+.commodity-value{font-weight:700;color:var(--accent-color)}
+
+/* --- NEW: Unified Guess History Styles --- */
+.guess-history-section{margin-bottom:20px}
+.guess-history-section h2{margin:0 0 10px 0;font-size:1.2em;text-align:center;color:#6c757d}
+.guess-history-list{list-style:none;padding:10px;margin:0;height:200px;overflow-y:auto;border:1px solid var(--border-color);border-radius:6px;background-color:#f8f9fa;display:flex;flex-direction:column;gap:8px}
+.guess-item{padding:8px 12px;border-radius:12px;max-width:80%;word-wrap:break-word}
+.guess-item.my-guess{background-color:var(--my-guess-bg);color:#fff;align-self:flex-end;text-align:right}
+.guess-item.my-guess .guess-distance{font-weight:700;margin-left:8px;display:inline-block}
+.guess-item.opponent-guess{background-color:var(--opponent-guess-bg);color:var(--text-color);align-self:flex-start}
+
+.winner-announcement{text-align:center;padding:10px;margin:0;border-radius:4px;font-size:1.2em;font-weight:700}
+.win-message{color:#fff;background-color:var(--win-color)}
+.lose-message{color:#fff;background-color:var(--lose-color)}
+
+/* --- NEW: Modernized Guess Form Styles --- */
+.guess-form-container{margin-top:15px;position:relative}
+.guess-input{width:100%;padding:15px;font-size:1.1em;border:2px solid var(--border-color);border-radius:8px;box-sizing:border-box;transition:border-color .2s,box-shadow .2s}
+.guess-input:focus{border-color:var(--accent-color);outline:none;box-shadow:0 0 0 3px rgba(0,123,255,.25)}
+.submit-button{width:100%;padding:15px;font-size:1.1em;font-weight:700;color:#fff;background-color:var(--accent-color);border:none;border-radius:8px;cursor:pointer;margin-top:10px;transition:background-color .2s,transform .1s}
+.submit-button:hover:not(:disabled){background-color:#0069d9;transform:translateY(-1px)}
+.submit-button:disabled{background-color:#a0a0a0;cursor:not-allowed}
+
+.autocomplete-list{list-style:none;padding:0;margin:5px 0 0 0;position:absolute;width:100%;max-height:200px;overflow-y:auto;border:1px solid var(--border-color);border-radius:8px;background-color:var(--container-bg);z-index:1000;box-shadow:0 4px 8px rgba(0,0,0,.1)}
+.autocomplete-item{padding:12px 15px;cursor:pointer}
+.autocomplete-item:hover,.autocomplete-item.active{background-color:var(--guess-bg)}
+#play-again-container{margin-top:20px;text-align:center}
+#play-again-button{width:100%;max-width:250px;padding:12px;font-size:1.1em;font-weight:700;color:#fff;background-color:var(--win-color);border:none;border-radius:8px;cursor:pointer;transition:background-color .2s,transform .1s}
+#play-again-button:hover:not(:disabled){background-color:#218838;transform:translateY(-1px)}
+#play-again-button:disabled{background-color:#a0a0a0;cursor:not-allowed}
+
+@media (min-width:768px){.game-container{max-width:600px}}

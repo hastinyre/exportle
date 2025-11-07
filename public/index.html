@@ -17,37 +17,40 @@
             </form>
         </div>
     </div>
+
     <div id="game-container" class="game-container" style="display: none;">
         <header>
-            <h1>Exportle Battle</h1>
+            <h1 id="player-titles">Player vs Player</h1>
             <p id="status-message">Connecting to the server...</p>
         </header>
+        
         <main id="game-content" style="display: none;">
             <section class="commodities-section">
                 <ul id="commodity-list" class="commodity-list"></ul>
             </section>
-            <section class="players-section">
-                <div id="player-self" class="player-area">
-                    <h2>You</h2>
-                    <ul class="guesses-history" id="self-guesses"></ul>
-                    <div class="guess-form-container">
-                        <form id="guess-form">
-                            <input type="text" id="guess-input" placeholder="Type a country name..." autocomplete="off">
-                            <div id="autocomplete-container"></div>
-                            <button type="submit" id="submit-button" disabled>Submit Guess</button>
-                        </form>
-                    </div>
-                </div>
-                <div id="player-opponent" class="player-area">
-                    <h2>Opponent</h2>
-                    <ul class="guesses-history" id="opponent-guesses"></ul>
-                </div>
+            
+            <!-- NEW: Unified Guess History -->
+            <section class="guess-history-section">
+                <h2>Guess History</h2>
+                <ul id="guess-history-list" class="guess-history-list"></ul>
             </section>
+            
+            <!-- NEW: Repositioned Guess Form -->
+            <div class="guess-form-container">
+                <form id="guess-form">
+                    <input type="text" id="guess-input" placeholder="Type a country name..." autocomplete="off">
+                    <div id="autocomplete-container"></div>
+                    <button type="submit" id="submit-button" disabled>Submit Guess</button>
+                </form>
+            </div>
+            
+            <!-- Play Again Button Area -->
             <div id="play-again-container" style="display: none;">
                 <button id="play-again-button">Play Again</button>
             </div>
         </main>
     </div>
+
     <script src="/socket.io/socket.io.js"></script>
     <script src="client.js"></script>
 </body>

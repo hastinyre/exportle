@@ -8,8 +8,6 @@ const app = express();
 const server = http.createServer(app);
 const io = new Server(server);
 
-// IMPORTANT: This line is changed for deployment.
-// It uses the port provided by the hosting service (like Railway), or defaults to 3000 for local development.
 const PORT = process.env.PORT || 3000;
 console.log('Server starting...');
 
@@ -17,7 +15,6 @@ console.log('Server starting...');
 let countriesData = {};
 let distancesData = {};
 let countryNames = [];
-
 try {
     const countriesPath = path.join(__dirname, 'data.json');
     const distancesPath = path.join(__dirname, 'country_distances.json');
@@ -50,16 +47,26 @@ function formatValue(value) {
 function startGame(roomName) {
     const room = gameRooms[roomName];
     if (!room) return;
+
     room.playAgainVotes = [];
     const allCountryNames = Object.keys(countriesData);
     const randomCountryIndex = Math.floor(Math.random() * allCountryNames.length);
     const answerCountryName = allCountryNames[randomCountryIndex];
-    const exportsData = countriesData[answerCountryName];
-    const answerCountry = { country: answerCountryName, exports: exportsData };
+    
+    // Store the full answer object in the room
+    room.answerCountry = {
+        name: answerCountryName,
+        exports: countriesData[answerCountryName]
+    };
     room.answer = answerCountryName.toLowerCase();
-    room.guesses = []; 
+    room.commoditiesVisible = 3; // Start with 3 commodities
     console.log(`New round for room ${roomName}. Answer: ${answerCountryName}`);
-    const commodities = answerCountry.exports.slice(0, 3).map(item => ({ name: item.HS4, value: formatValue(item["Total Trade Value"]) }));
+
+    const commodities = room.answerCountry.exports.slice(0, room.commoditiesVisible).map(item => ({
+        name: item.HS4, 
+        value: formatValue(item["Total Trade Value"]) 
+    }));
+
     io.to(roomName).emit('newRound', { commodities });
 }
 
@@ -74,7 +81,13 @@ io.on('connection', (socket) => {
             const roomName = `room-${waitingPlayer.id}`;
             waitingPlayer.join(roomName);
             socket.join(roomName);
-            gameRooms[roomName] = { players: { [waitingPlayer.id]: waitingPlayer.username, [socket.id]: socket.username }, answer: null, guesses: [], playAgainVotes: [] };
+            gameRooms[roomName] = { 
+                players: { [waitingPlayer.id]: waitingPlayer.username, [socket.id]: socket.username }, 
+                answer: null, 
+                answerCountry: null,
+                commoditiesVisible: 3,
+                playAgainVotes: [] 
+            };
             console.log(`Game starting in ${roomName} between ${waitingPlayer.username} and ${socket.username}`);
             io.to(roomName).emit('gameStart', { players: gameRooms[roomName].players, allCountries: countryNames, roomName: roomName });
             startGame(roomName);
@@ -90,18 +103,39 @@ io.on('connection', (socket) => {
         const { guess, roomName } = data;
         const room = gameRooms[roomName];
         if (!room) return;
+
         const answer = room.answer;
         const guesserId = socket.id;
         const guesserUsername = socket.username;
         const sanitizedGuess = guess.toLowerCase();
+
         if (sanitizedGuess === answer) {
             io.to(roomName).emit('roundOver', { winnerId: guesserId, winnerName: guesserUsername, answer: answer });
             console.log(`Room ${roomName}: Player ${guesserUsername} won!`);
         } else {
             const distance = distancesData[answer] ? distancesData[answer][sanitizedGuess] : 'N/A';
-            const result = { guesserId: guesserId, guesserName: guesserUsername, guess: guess, distance: distance !== 'N/A' ? `${distance.toLocaleString()} km` : 'N/A' };
+            const result = { 
+                guesserId: guesserId, 
+                guesserName: guesserUsername, 
+                guess: guess, 
+                distance: distance !== 'N/A' ? `${distance.toLocaleString()} km` : 'N/A' 
+            };
             io.to(roomName).emit('guessResult', result);
             console.log(`Room ${roomName}: Player ${guesserUsername} guessed ${guess} (Incorrect)`);
+            
+            // NEW: After an incorrect guess, reveal another commodity if available
+            if (room.commoditiesVisible < 10) {
+                room.commoditiesVisible++;
+                const nextCommodityIndex = room.commoditiesVisible - 1;
+                const nextCommodityData = room.answerCountry.exports[nextCommodityIndex];
+                if (nextCommodityData) {
+                    const newCommodity = {
+                        name: nextCommodityData.HS4,
+                        value: formatValue(nextCommodityData["Total Trade Value"])
+                    };
+                    io.to(roomName).emit('addCommodity', { newCommodity });
+                }
+            }
         }
     });
 
@@ -127,15 +161,13 @@ io.on('connection', (socket) => {
         }
         let roomName = null;
         for (const name in gameRooms) {
-            const room = gameRooms[name];
-            if (Object.keys(room.players).includes(socket.id)) {
+            if (Object.keys(gameRooms[name].players).includes(socket.id)) {
                 roomName = name;
                 break;
             }
         }
         if (roomName) {
-            const room = gameRooms[roomName];
-            const remainingPlayerId = Object.keys(room.players).find(id => id !== socket.id);
+            const remainingPlayerId = Object.keys(gameRooms[roomName].players).find(id => id !== socket.id);
             if (remainingPlayerId) {
                 io.to(remainingPlayerId).emit('opponentLeft', { message: 'Your opponent has disconnected. Please refresh to find a new game.' });
             }
