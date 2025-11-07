@@ -38,15 +38,25 @@ function addCommodityToList(commodity) {
     setTimeout(() => { li.style.backgroundColor = ''; }, 750);
 }
 
-// --- UPDATED: Guess History Formatting ---
+// --- HEAVILY UPDATED: Guess History Formatting ---
 function addGuessToHistory(result) {
-    const { guesserId, guesserName, guess, distance } = result;
+    const { guesserId, guesserName, guess, distance, direction } = result;
     const guessItem = document.createElement('li');
     guessItem.className = 'guess-item';
 
     if (guesserId === myPlayerId) {
         guessItem.classList.add('my-guess');
-        guessItem.innerHTML = `Target is ${distance} from <span class="guess-country">${guess}</span>`;
+        const upperCaseGuess = guess.toUpperCase();
+
+        // Handle the "bordering" case
+        if (distance === 0) {
+            guessItem.innerHTML = `Target is bordering <span class="guess-country">${upperCaseGuess}</span>`;
+        } else {
+            // Handle the normal distance/direction case
+            const formattedDistance = distance ? distance.toLocaleString() + 'km' : '';
+            const formattedDirection = direction ? ` ${direction}` : ''; // Add a space before direction
+            guessItem.innerHTML = `Target is ${formattedDistance}${formattedDirection} of <span class="guess-country">${upperCaseGuess}</span>`;
+        }
     } else {
         guessItem.classList.add('opponent-guess');
         guessItem.textContent = `${guesserName} guessed ${guess}`;
