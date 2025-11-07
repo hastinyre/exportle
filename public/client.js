@@ -34,11 +34,11 @@ function addCommodityToList(commodity) {
     li.className = 'commodity-item';
     li.innerHTML = `<span class="commodity-name">${commodity.name}</span><span class="commodity-value">${commodity.value}</span>`;
     commodityList.appendChild(li);
-    // Flash effect for new commodity
     li.style.backgroundColor = '#e0efff';
     setTimeout(() => { li.style.backgroundColor = ''; }, 750);
 }
 
+// --- UPDATED: Guess History Formatting ---
 function addGuessToHistory(result) {
     const { guesserId, guesserName, guess, distance } = result;
     const guessItem = document.createElement('li');
@@ -46,7 +46,7 @@ function addGuessToHistory(result) {
 
     if (guesserId === myPlayerId) {
         guessItem.classList.add('my-guess');
-        guessItem.innerHTML = `${guess} <span class="guess-distance">${distance}</span>`;
+        guessItem.innerHTML = `Target is ${distance} from <span class="guess-country">${guess}</span>`;
     } else {
         guessItem.classList.add('opponent-guess');
         guessItem.textContent = `${guesserName} guessed ${guess}`;
@@ -105,7 +105,6 @@ socket.on('newRound', (data) => {
     playAgainButton.textContent = 'Play Again';
 });
 
-// NEW: Listener for single commodity updates
 socket.on('addCommodity', (data) => {
     addCommodityToList(data.newCommodity);
 });

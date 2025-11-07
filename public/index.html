@@ -29,22 +29,26 @@
                 <ul id="commodity-list" class="commodity-list"></ul>
             </section>
             
-            <!-- NEW: Unified Guess History -->
             <section class="guess-history-section">
                 <h2>Guess History</h2>
                 <ul id="guess-history-list" class="guess-history-list"></ul>
             </section>
             
-            <!-- NEW: Repositioned Guess Form -->
             <div class="guess-form-container">
                 <form id="guess-form">
-                    <input type="text" id="guess-input" placeholder="Type a country name..." autocomplete="off">
+                    <!-- NEW: Input Group for modern styling -->
+                    <div class="input-group">
+                        <input type="text" id="guess-input" placeholder="Type a country name..." autocomplete="off">
+                        <button type="submit" id="submit-button" disabled>
+                            <!-- NEW: SVG Icon for button -->
+                            <svg viewBox="0 0 24 24"><path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"></path></svg>
+                            <span>Guess</span>
+                        </button>
+                    </div>
                     <div id="autocomplete-container"></div>
-                    <button type="submit" id="submit-button" disabled>Submit Guess</button>
                 </form>
             </div>
             
-            <!-- Play Again Button Area -->
             <div id="play-again-container" style="display: none;">
                 <button id="play-again-button">Play Again</button>
             </div>
