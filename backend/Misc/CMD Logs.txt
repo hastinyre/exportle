@@ -1,0 +1,947 @@
+Microsoft Windows [Version 10.0.26200.7019]
+(c) Microsoft Corporation. All rights reserved.
+
+C:\Users\xiiil>cd C:\Users\xiiil\Desktop\direction
+
+C:\Users\xiiil\Desktop\direction>python country_directions_india.py
+Traceback (most recent call last):
+  File "C:\Users\xiiil\Desktop\direction\country_directions_india.py", line 5, in <module>
+    import geopandas as gpd
+ModuleNotFoundError: No module named 'geopandas'
+
+C:\Users\xiiil\Desktop\direction>pip install -r requirements.txt
+Defaulting to user installation because normal site-packages is not writeable
+Collecting geopandas (from -r requirements.txt (line 1))
+  Downloading geopandas-1.1.1-py3-none-any.whl.metadata (2.3 kB)
+Collecting shapely (from -r requirements.txt (line 2))
+  Downloading shapely-2.1.2-cp314-cp314-win_amd64.whl.metadata (7.1 kB)
+Collecting pyproj (from -r requirements.txt (line 3))
+  Downloading pyproj-3.7.2-cp314-cp314-win_amd64.whl.metadata (31 kB)
+Requirement already satisfied: numpy>=1.24 in c:\users\xiiil\appdata\roaming\python\python314\site-packages (from geopandas->-r requirements.txt (line 1)) (2.3.4)
+Collecting pyogrio>=0.7.2 (from geopandas->-r requirements.txt (line 1))
+  Downloading pyogrio-0.11.1.tar.gz (287 kB)
+  Installing build dependencies ... done
+  Getting requirements to build wheel ... done
+  Preparing metadata (pyproject.toml) ... error
+  error: subprocess-exited-with-error
+
+  × Preparing metadata (pyproject.toml) did not run successfully.
+  │ exit code: 1
+  ╰─> [1 lines of output]
+      GDAL_VERSION must be provided as an environment variable or as --gdalversion command line argument
+      [end of output]
+
+  note: This error originates from a subprocess, and is likely not a problem with pip.
+
+[notice] A new release of pip is available: 25.2 -> 25.3
+[notice] To update, run: python.exe -m pip install --upgrade pip
+error: metadata-generation-failed
+
+× Encountered error while generating package metadata.
+╰─> See above for output.
+
+note: This is an issue with the package mentioned above, not pip.
+hint: See above for details.
+
+C:\Users\xiiil\Desktop\direction>py -3.11 -m venv .venv
+
+C:\Users\xiiil\Desktop\direction>.venv\Scripts\activate
+
+(.venv) C:\Users\xiiil\Desktop\direction>pip install --upgrade pip wheel
+Requirement already satisfied: pip in c:\users\xiiil\desktop\direction\.venv\lib\site-packages (24.0)
+Collecting pip
+  Downloading pip-25.3-py3-none-any.whl.metadata (4.7 kB)
+Collecting wheel
+  Downloading wheel-0.45.1-py3-none-any.whl.metadata (2.3 kB)
+Downloading pip-25.3-py3-none-any.whl (1.8 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 1.8/1.8 MB 863.9 kB/s eta 0:00:00
+Downloading wheel-0.45.1-py3-none-any.whl (72 kB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 72.5/72.5 kB 90.5 kB/s eta 0:00:00
+ERROR: To modify pip, please run the following command:
+C:\Users\xiiil\Desktop\direction\.venv\Scripts\python.exe -m pip install --upgrade pip wheel
+
+[notice] A new release of pip is available: 24.0 -> 25.3
+[notice] To update, run: python.exe -m pip install --upgrade pip
+
+(.venv) C:\Users\xiiil\Desktop\direction>pip install geopandas==1.1.1 shapely==2.1.2 pyproj==3.7.2 pyogrio==0.11.1
+Collecting geopandas==1.1.1
+  Using cached geopandas-1.1.1-py3-none-any.whl.metadata (2.3 kB)
+Collecting shapely==2.1.2
+  Downloading shapely-2.1.2-cp311-cp311-win_amd64.whl.metadata (7.1 kB)
+Collecting pyproj==3.7.2
+  Downloading pyproj-3.7.2-cp311-cp311-win_amd64.whl.metadata (31 kB)
+Collecting pyogrio==0.11.1
+  Downloading pyogrio-0.11.1-cp311-cp311-win_amd64.whl.metadata (5.4 kB)
+Collecting numpy>=1.24 (from geopandas==1.1.1)
+  Using cached numpy-2.3.4-cp311-cp311-win_amd64.whl.metadata (60 kB)
+Collecting packaging (from geopandas==1.1.1)
+  Downloading packaging-25.0-py3-none-any.whl.metadata (3.3 kB)
+Collecting pandas>=2.0.0 (from geopandas==1.1.1)
+  Using cached pandas-2.3.3-cp311-cp311-win_amd64.whl.metadata (19 kB)
+Collecting certifi (from pyproj==3.7.2)
+  Using cached certifi-2025.10.5-py3-none-any.whl.metadata (2.5 kB)
+Collecting python-dateutil>=2.8.2 (from pandas>=2.0.0->geopandas==1.1.1)
+  Using cached python_dateutil-2.9.0.post0-py2.py3-none-any.whl.metadata (8.4 kB)
+Collecting pytz>=2020.1 (from pandas>=2.0.0->geopandas==1.1.1)
+  Using cached pytz-2025.2-py2.py3-none-any.whl.metadata (22 kB)
+Collecting tzdata>=2022.7 (from pandas>=2.0.0->geopandas==1.1.1)
+  Using cached tzdata-2025.2-py2.py3-none-any.whl.metadata (1.4 kB)
+Collecting six>=1.5 (from python-dateutil>=2.8.2->pandas>=2.0.0->geopandas==1.1.1)
+  Using cached six-1.17.0-py2.py3-none-any.whl.metadata (1.7 kB)
+Downloading geopandas-1.1.1-py3-none-any.whl (338 kB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 338.4/338.4 kB 1.3 MB/s eta 0:00:00
+Downloading shapely-2.1.2-cp311-cp311-win_amd64.whl (1.7 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 1.7/1.7 MB 1.5 MB/s eta 0:00:00
+Downloading pyproj-3.7.2-cp311-cp311-win_amd64.whl (6.3 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 6.3/6.3 MB 1.6 MB/s eta 0:00:00
+Downloading pyogrio-0.11.1-cp311-cp311-win_amd64.whl (19.2 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 19.2/19.2 MB 1.2 MB/s eta 0:00:00
+Using cached numpy-2.3.4-cp311-cp311-win_amd64.whl (13.1 MB)
+Using cached pandas-2.3.3-cp311-cp311-win_amd64.whl (11.3 MB)
+Using cached certifi-2025.10.5-py3-none-any.whl (163 kB)
+Downloading packaging-25.0-py3-none-any.whl (66 kB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 66.5/66.5 kB 906.9 kB/s eta 0:00:00
+Using cached python_dateutil-2.9.0.post0-py2.py3-none-any.whl (229 kB)
+Using cached pytz-2025.2-py2.py3-none-any.whl (509 kB)
+Using cached tzdata-2025.2-py2.py3-none-any.whl (347 kB)
+Using cached six-1.17.0-py2.py3-none-any.whl (11 kB)
+Installing collected packages: pytz, tzdata, six, packaging, numpy, certifi, shapely, python-dateutil, pyproj, pyogrio, pandas, geopandas
+Successfully installed certifi-2025.10.5 geopandas-1.1.1 numpy-2.3.4 packaging-25.0 pandas-2.3.3 pyogrio-0.11.1 pyproj-3.7.2 python-dateutil-2.9.0.post0 pytz-2025.2 shapely-2.1.2 six-1.17.0 tzdata-2025.2
+
+[notice] A new release of pip is available: 24.0 -> 25.3
+[notice] To update, run: python.exe -m pip install --upgrade pip
+
+(.venv) C:\Users\xiiil\Desktop\direction>python country_directions_india.py
+==> Loading shapefile ...
+==> Found 177 rows. Extracting and filtering polygons ...
+   [geom 1/177] parsing ...
+   [geom 20/177] parsing ...
+   [geom 40/177] parsing ...
+   [geom 60/177] parsing ...
+   [geom 80/177] parsing ...
+   [geom 100/177] parsing ...
+   [geom 120/177] parsing ...
+   [geom 140/177] parsing ...
+   [geom 160/177] parsing ...
+
+==> Computing directions: India -> (all countries)
+   [progress] 1/195 -> afghanistan
+   [progress] 10/195 -> austria
+   [progress] 20/195 -> bhutan
+   [progress] 30/195 -> cameroon
+   [progress] 40/195 -> costa rica
+   [progress] 50/195 -> ecuador
+   [progress] 60/195 -> france
+   [progress] 70/195 -> guinea-bissau
+   [progress] 80/195 -> israel
+   [progress] 90/195 -> kyrgyzstan
+   [progress] 100/195 -> madagascar
+   [progress] 110/195 -> micronesia
+   [progress] 120/195 -> nepal
+   [progress] 130/195 -> pakistan
+   [progress] 140/195 -> qatar
+   [progress] 150/195 -> saudi arabia
+   [progress] 160/195 -> south africa
+   [progress] 170/195 -> taiwan
+   [progress] 180/195 -> turkmenistan
+   [progress] 190/195 -> vatican city
+   [progress] 195/195 -> zimbabwe
+
+==> Done. Computed India->* directions in ~139.5s
+==> Saved: .\outputs\india_directions.json
+
+(.venv) C:\Users\xiiil\Desktop\direction>python country_directions.py
+C:\Users\xiiil\AppData\Local\Programs\Python\Python311\python.exe: can't open file 'C:\\Users\\xiiil\\Desktop\\direction\\country_directions.py': [Errno 2] No such file or directory
+
+(.venv) C:\Users\xiiil\Desktop\direction>python country_directions.py
+==> Loading shapefile ...
+==> Found 177 rows. Extracting and filtering polygons ...
+   [geom 1/177] parsing ...
+   [geom 20/177] parsing ...
+   [geom 40/177] parsing ...
+   [geom 60/177] parsing ...
+   [geom 80/177] parsing ...
+   [geom 100/177] parsing ...
+   [geom 120/177] parsing ...
+   [geom 140/177] parsing ...
+   [geom 160/177] parsing ...
+   [geom 177/177] parsing ...
+
+==> Computing pairwise directions among 196 countries ...
+[1/196] afghanistan -> others ...
+[2/196] albania -> others ...
+[3/196] algeria -> others ...
+[4/196] andorra -> others ...
+[5/196] angola -> others ...
+[6/196] antigua and barbuda -> others ...
+[7/196] argentina -> others ...
+[8/196] armenia -> others ...
+[9/196] australia -> others ...
+[10/196] austria -> others ...
+   ...completed 10/196 rows in ~818.1s
+[11/196] azerbaijan -> others ...
+[12/196] bahamas -> others ...
+[13/196] bahrain -> others ...
+[14/196] bangladesh -> others ...
+[15/196] barbados -> others ...
+[16/196] belarus -> others ...
+[17/196] belgium -> others ...
+[18/196] belize -> others ...
+[19/196] benin -> others ...
+[20/196] bhutan -> others ...
+   ...completed 20/196 rows in ~1420.8s
+[21/196] bolivia -> others ...
+[22/196] bosnia and herzegovina -> others ...
+[23/196] botswana -> others ...
+[24/196] brazil -> others ...
+[25/196] brunei -> others ...
+[26/196] bulgaria -> others ...
+[27/196] burkina faso -> others ...
+[28/196] burundi -> others ...
+[29/196] cambodia -> others ...
+[30/196] cameroon -> others ...
+   ...completed 30/196 rows in ~2124.6s
+[31/196] canada -> others ...
+[32/196] cape verde -> others ...
+[33/196] central african republic -> others ...
+[34/196] chad -> others ...
+[35/196] chile -> others ...
+[36/196] china -> others ...
+[37/196] colombia -> others ...
+[38/196] comoros -> others ...
+[39/196] congo -> others ...
+[40/196] costa rica -> others ...
+   ...completed 40/196 rows in ~2776.3s
+[41/196] croatia -> others ...
+[42/196] cuba -> others ...
+[43/196] cyprus -> others ...
+[44/196] czech republic -> others ...
+[45/196] democratic republic of the congo -> others ...
+[46/196] denmark -> others ...
+[47/196] djibouti -> others ...
+[48/196] dominica -> others ...
+[49/196] dominican republic -> others ...
+[50/196] ecuador -> others ...
+   ...completed 50/196 rows in ~3313.6s
+[51/196] egypt -> others ...
+[52/196] el salvador -> others ...
+[53/196] equatorial guinea -> others ...
+[54/196] eritrea -> others ...
+[55/196] estonia -> others ...
+[56/196] eswatini -> others ...
+[57/196] ethiopia -> others ...
+[58/196] fiji -> others ...
+[59/196] finland -> others ...
+[60/196] france -> others ...
+   ...completed 60/196 rows in ~3861.3s
+[61/196] gabon -> others ...
+[62/196] gambia -> others ...
+[63/196] georgia -> others ...
+[64/196] germany -> others ...
+[65/196] ghana -> others ...
+[66/196] greece -> others ...
+[67/196] grenada -> others ...
+[68/196] guatemala -> others ...
+[69/196] guinea -> others ...
+[70/196] guinea-bissau -> others ...
+   ...completed 70/196 rows in ~4508.0s
+[71/196] guyana -> others ...
+[72/196] haiti -> others ...
+[73/196] honduras -> others ...
+[74/196] hungary -> others ...
+[75/196] iceland -> others ...
+[76/196] india -> others ...
+[77/196] indonesia -> others ...
+[78/196] iran -> others ...
+[79/196] iraq -> others ...
+[80/196] ireland -> others ...
+   ...completed 80/196 rows in ~5719.7s
+[81/196] israel -> others ...
+[82/196] italy -> others ...
+[83/196] ivory coast -> others ...
+[84/196] jamaica -> others ...
+[85/196] japan -> others ...
+[86/196] jordan -> others ...
+[87/196] kazakhstan -> others ...
+[88/196] kenya -> others ...
+[89/196] kiribati -> others ...
+[90/196] kuwait -> others ...
+   ...completed 90/196 rows in ~6761.9s
+[91/196] kyrgyzstan -> others ...
+[92/196] laos -> others ...
+[93/196] latvia -> others ...
+[94/196] lebanon -> others ...
+[95/196] lesotho -> others ...
+[96/196] liberia -> others ...
+[97/196] libya -> others ...
+[98/196] liechtenstein -> others ...
+[99/196] lithuania -> others ...
+[100/196] luxembourg -> others ...
+   ...completed 100/196 rows in ~7280.3s
+[101/196] madagascar -> others ...
+[102/196] malawi -> others ...
+[103/196] malaysia -> others ...
+[104/196] maldives -> others ...
+[105/196] mali -> others ...
+[106/196] malta -> others ...
+[107/196] marshall islands -> others ...
+[108/196] mauritania -> others ...
+[109/196] mauritius -> others ...
+[110/196] mexico -> others ...
+   ...completed 110/196 rows in ~7613.0s
+[111/196] micronesia -> others ...
+[112/196] moldova -> others ...
+[113/196] monaco -> others ...
+[114/196] mongolia -> others ...
+[115/196] montenegro -> others ...
+[116/196] morocco -> others ...
+[117/196] mozambique -> others ...
+[118/196] myanmar -> others ...
+[119/196] namibia -> others ...
+[120/196] nauru -> others ...
+   ...completed 120/196 rows in ~7952.0s
+[121/196] nepal -> others ...
+[122/196] netherlands -> others ...
+[123/196] new zealand -> others ...
+[124/196] nicaragua -> others ...
+[125/196] niger -> others ...
+[126/196] nigeria -> others ...
+[127/196] north korea -> others ...
+[128/196] north macedonia -> others ...
+[129/196] norway -> others ...
+[130/196] oman -> others ...
+   ...completed 130/196 rows in ~8381.4s
+[131/196] pakistan -> others ...
+[132/196] palau -> others ...
+[133/196] palestine -> others ...
+[134/196] panama -> others ...
+[135/196] papua new guinea -> others ...
+[136/196] paraguay -> others ...
+[137/196] peru -> others ...
+[138/196] philippines -> others ...
+[139/196] poland -> others ...
+[140/196] portugal -> others ...
+   ...completed 140/196 rows in ~8718.3s
+[141/196] qatar -> others ...
+[142/196] romania -> others ...
+[143/196] russia -> others ...
+[144/196] rwanda -> others ...
+[145/196] saint kitts and nevis -> others ...
+[146/196] saint lucia -> others ...
+[147/196] saint vincent and the grenadines -> others ...
+[148/196] samoa -> others ...
+[149/196] san marino -> others ...
+[150/196] sao tome and principe -> others ...
+   ...completed 150/196 rows in ~8873.3s
+[151/196] saudi arabia -> others ...
+[152/196] senegal -> others ...
+[153/196] serbia -> others ...
+[154/196] seychelles -> others ...
+[155/196] sierra leone -> others ...
+[156/196] singapore -> others ...
+[157/196] slovakia -> others ...
+[158/196] slovenia -> others ...
+[159/196] solomon islands -> others ...
+[160/196] somalia -> others ...
+   ...completed 160/196 rows in ~9080.4s
+[161/196] south africa -> others ...
+[162/196] south korea -> others ...
+[163/196] south sudan -> others ...
+[164/196] spain -> others ...
+[165/196] sri lanka -> others ...
+[166/196] sudan -> others ...
+[167/196] suriname -> others ...
+[168/196] sweden -> others ...
+[169/196] switzerland -> others ...
+[170/196] syria -> others ...
+   ...completed 170/196 rows in ~9414.8s
+[171/196] taiwan -> others ...
+[172/196] tajikistan -> others ...
+[173/196] tanzania -> others ...
+[174/196] thailand -> others ...
+[175/196] timor-leste -> others ...
+[176/196] togo -> others ...
+[177/196] tonga -> others ...
+[178/196] trinidad and tobago -> others ...
+[179/196] tunisia -> others ...
+[180/196] turkey -> others ...
+   ...completed 180/196 rows in ~9710.3s
+[181/196] turkmenistan -> others ...
+[182/196] tuvalu -> others ...
+[183/196] uganda -> others ...
+[184/196] ukraine -> others ...
+[185/196] united arab emirates -> others ...
+[186/196] united kingdom -> others ...
+[187/196] united states -> others ...
+[188/196] uruguay -> others ...
+[189/196] uzbekistan -> others ...
+[190/196] vanuatu -> others ...
+   ...completed 190/196 rows in ~9868.8s
+[191/196] vatican city -> others ...
+[192/196] venezuela -> others ...
+[193/196] vietnam -> others ...
+[194/196] yemen -> others ...
+[195/196] zambia -> others ...
+[196/196] zimbabwe -> others ...
+   ...completed 196/196 rows in ~9887.1s
+
+==> All directions computed in ~164.8 minutes.
+==> Saved matrix to '.\outputs\country_directions.json'
+
+(.venv) C:\Users\xiiil\Desktop\direction>cd C:\Users\xiiil\GitHub\exportle\backend
+
+(.venv) C:\Users\xiiil\GitHub\exportle\backend>python find_close_countries.py
+Please enter the name of the JSON file: country_distances.json
+
+Found the following pairs of countries less than 1km apart:
+- afghanistan and china, Distance: 0.3 km
+- afghanistan and iran, Distance: 0.1 km
+- algeria and mauritania, Distance: 0.1 km
+- angola and congo, Distance: 0.2 km
+- armenia and iran, Distance: 0.1 km
+- azerbaijan and russia, Distance: 0.3 km
+- azerbaijan and turkey, Distance: 0.9 km
+- bangladesh and myanmar, Distance: 0.1 km
+- belize and mexico, Distance: 0.1 km
+- benin and niger, Distance: 0.3 km
+- brazil and colombia, Distance: 0.1 km
+- brazil and suriname, Distance: 0.1 km
+- brazil and venezuela, Distance: 0.1 km
+- burkina faso and togo, Distance: 0.1 km
+- cameroon and central african republic, Distance: 0.1 km
+- cameroon and chad, Distance: 0.1 km
+- cameroon and gabon, Distance: 0.1 km
+- cameroon and niger, Distance: 0.5 km
+- central african republic and democratic republic of the congo, Distance: 0.6 km
+- central african republic and sudan, Distance: 0.1 km
+- china and india, Distance: 0.1 km
+- china and kazakhstan, Distance: 0.1 km
+- china and laos, Distance: 0.2 km
+- china and pakistan, Distance: 0.4 km
+- china and russia, Distance: 0.3 km
+- china and tajikistan, Distance: 0.1 km
+- china and vietnam, Distance: 0.1 km
+- colombia and panama, Distance: 0.1 km
+- democratic republic of the congo and south sudan, Distance: 0.2 km
+- democratic republic of the congo and tanzania, Distance: 0.4 km
+- egypt and jordan, Distance: 0.7 km
+- eswatini and mozambique, Distance: 0.1 km
+- france and italy, Distance: 0.1 km
+- georgia and russia, Distance: 0.1 km
+- greece and turkey, Distance: 0.2 km
+- guinea and ivory coast, Distance: 0.1 km
+- hungary and ukraine, Distance: 0.1 km
+- indonesia and timor-leste, Distance: 0.2 km
+- iran and turkey, Distance: 0.1 km
+- iran and turkmenistan, Distance: 0.1 km
+- kazakhstan and turkmenistan, Distance: 0.1 km
+- kenya and somalia, Distance: 0.2 km
+- latvia and russia, Distance: 0.6 km
+- libya and sudan, Distance: 0.1 km
+- libya and tunisia, Distance: 0.1 km
+- mexico and united states, Distance: 0.6 km
+- mozambique and zambia, Distance: 0.1 km
+- namibia and zambia, Distance: 0.1 km
+- niger and nigeria, Distance: 0.1 km
+- north korea and russia, Distance: 0.2 km
+- norway and russia, Distance: 0.1 km
+- poland and ukraine, Distance: 0.1 km
+- russia and ukraine, Distance: 0.2 km
+- slovakia and ukraine, Distance: 0.1 km
+- south africa and zimbabwe, Distance: 0.5 km
+- tanzania and zambia, Distance: 0.1 km
+
+(.venv) C:\Users\xiiil\GitHub\exportle\backend>python find_close_countries.py
+Please enter the name of the JSON file: find_close_countries.py
+Error: The file 'find_close_countries.py' is not a valid JSON file.
+
+(.venv) C:\Users\xiiil\GitHub\exportle\backend>python find_close_countries.py
+Please enter the name of the JSON file: country_distances.json
+
+Found the following pairs of countries less than 1km apart:
+1- afghanistan and china, Distance: 0.3 km
+1- afghanistan and iran, Distance: 0.1 km
+1- algeria and mauritania, Distance: 0.1 km
+1- angola and congo, Distance: 0.2 km
+1- armenia and iran, Distance: 0.1 km
+1- azerbaijan and russia, Distance: 0.3 km
+1- azerbaijan and turkey, Distance: 0.9 km
+1- bangladesh and myanmar, Distance: 0.1 km
+1- belize and mexico, Distance: 0.1 km
+1- benin and niger, Distance: 0.3 km
+1- brazil and colombia, Distance: 0.1 km
+1- brazil and suriname, Distance: 0.1 km
+1- brazil and venezuela, Distance: 0.1 km
+1- burkina faso and togo, Distance: 0.1 km
+1- cameroon and central african republic, Distance: 0.1 km
+1- cameroon and chad, Distance: 0.1 km
+1- cameroon and gabon, Distance: 0.1 km
+1- cameroon and niger, Distance: 0.5 km
+1- central african republic and democratic republic of the congo, Distance: 0.6 km
+1- central african republic and sudan, Distance: 0.1 km
+1- china and india, Distance: 0.1 km
+1- china and kazakhstan, Distance: 0.1 km
+1- china and laos, Distance: 0.2 km
+1- china and pakistan, Distance: 0.4 km
+1- china and russia, Distance: 0.3 km
+1- china and tajikistan, Distance: 0.1 km
+1- china and vietnam, Distance: 0.1 km
+1- colombia and panama, Distance: 0.1 km
+1- democratic republic of the congo and south sudan, Distance: 0.2 km
+1- democratic republic of the congo and tanzania, Distance: 0.4 km
+1- egypt and jordan, Distance: 0.7 km
+1- eswatini and mozambique, Distance: 0.1 km
+1- france and italy, Distance: 0.1 km
+1- georgia and russia, Distance: 0.1 km
+1- greece and turkey, Distance: 0.2 km
+1- guinea and ivory coast, Distance: 0.1 km
+1- hungary and ukraine, Distance: 0.1 km
+1- indonesia and timor-leste, Distance: 0.2 km
+1- iran and turkey, Distance: 0.1 km
+1- iran and turkmenistan, Distance: 0.1 km
+1- kazakhstan and turkmenistan, Distance: 0.1 km
+1- kenya and somalia, Distance: 0.2 km
+1- latvia and russia, Distance: 0.6 km
+1- libya and sudan, Distance: 0.1 km
+1- libya and tunisia, Distance: 0.1 km
+1- mexico and united states, Distance: 0.6 km
+1- mozambique and zambia, Distance: 0.1 km
+1- namibia and zambia, Distance: 0.1 km
+1- niger and nigeria, Distance: 0.1 km
+1- north korea and russia, Distance: 0.2 km
+1- norway and russia, Distance: 0.1 km
+1- poland and ukraine, Distance: 0.1 km
+1- russia and ukraine, Distance: 0.2 km
+1- slovakia and ukraine, Distance: 0.1 km
+1- south africa and zimbabwe, Distance: 0.5 km
+1- tanzania and zambia, Distance: 0.1 km
+
+(.venv) C:\Users\xiiil\GitHub\exportle\backend>python find_close_countries.py
+Please enter the name of the JSON file: country_distances.json
+
+Found the following pairs of countries less than 1km apart:
+1- afghanistan and china, Distance: 0.3 km
+1- afghanistan and iran, Distance: 0.1 km
+1- algeria and mauritania, Distance: 0.1 km
+1- angola and congo, Distance: 0.2 km
+1- armenia and iran, Distance: 0.1 km
+1- azerbaijan and russia, Distance: 0.3 km
+1- azerbaijan and turkey, Distance: 0.9 km
+1- bangladesh and myanmar, Distance: 0.1 km
+1- belize and mexico, Distance: 0.1 km
+1- benin and niger, Distance: 0.3 km
+1- brazil and colombia, Distance: 0.1 km
+1- brazil and suriname, Distance: 0.1 km
+1- brazil and venezuela, Distance: 0.1 km
+1- burkina faso and togo, Distance: 0.1 km
+1- cameroon and central african republic, Distance: 0.1 km
+1- cameroon and chad, Distance: 0.1 km
+1- cameroon and gabon, Distance: 0.1 km
+1- cameroon and niger, Distance: 0.5 km
+1- central african republic and democratic republic of the congo, Distance: 0.6 km
+1- central african republic and sudan, Distance: 0.1 km
+1- china and india, Distance: 0.1 km
+1- china and kazakhstan, Distance: 0.1 km
+1- china and laos, Distance: 0.2 km
+1- china and pakistan, Distance: 0.4 km
+1- china and russia, Distance: 0.3 km
+1- china and tajikistan, Distance: 0.1 km
+1- china and vietnam, Distance: 0.1 km
+1- colombia and panama, Distance: 0.1 km
+1- democratic republic of the congo and south sudan, Distance: 0.2 km
+1- democratic republic of the congo and tanzania, Distance: 0.4 km
+1- egypt and jordan, Distance: 0.7 km
+1- eswatini and mozambique, Distance: 0.1 km
+1- france and italy, Distance: 0.1 km
+1- georgia and russia, Distance: 0.1 km
+1- greece and turkey, Distance: 0.2 km
+1- guinea and ivory coast, Distance: 0.1 km
+1- hungary and ukraine, Distance: 0.1 km
+1- indonesia and timor-leste, Distance: 0.2 km
+1- iran and turkey, Distance: 0.1 km
+1- iran and turkmenistan, Distance: 0.1 km
+1- kazakhstan and turkmenistan, Distance: 0.1 km
+1- kenya and somalia, Distance: 0.2 km
+1- latvia and russia, Distance: 0.6 km
+1- libya and sudan, Distance: 0.1 km
+1- libya and tunisia, Distance: 0.1 km
+1- mexico and united states, Distance: 0.6 km
+1- mozambique and zambia, Distance: 0.1 km
+1- namibia and zambia, Distance: 0.1 km
+1- niger and nigeria, Distance: 0.1 km
+1- north korea and russia, Distance: 0.2 km
+1- norway and russia, Distance: 0.1 km
+1- poland and ukraine, Distance: 0.1 km
+1- russia and ukraine, Distance: 0.2 km
+1- slovakia and ukraine, Distance: 0.1 km
+1- south africa and zimbabwe, Distance: 0.5 km
+1- tanzania and zambia, Distance: 0.1 km
+
+(.venv) C:\Users\xiiil\GitHub\exportle\backend>python find_close_countries.py
+Please enter the name of the JSON file: country_distances.json
+
+Found the following pairs of countries less than 1km apart:
+1- afghanistan and china, Distance: 0.3 km
+2- afghanistan and iran, Distance: 0.1 km
+3- algeria and mauritania, Distance: 0.1 km
+4- angola and congo, Distance: 0.2 km
+5- armenia and iran, Distance: 0.1 km
+6- azerbaijan and russia, Distance: 0.3 km
+7- azerbaijan and turkey, Distance: 0.9 km
+8- bangladesh and myanmar, Distance: 0.1 km
+9- belize and mexico, Distance: 0.1 km
+10- benin and niger, Distance: 0.3 km
+11- brazil and colombia, Distance: 0.1 km
+12- brazil and suriname, Distance: 0.1 km
+13- brazil and venezuela, Distance: 0.1 km
+14- burkina faso and togo, Distance: 0.1 km
+15- cameroon and central african republic, Distance: 0.1 km
+16- cameroon and chad, Distance: 0.1 km
+17- cameroon and gabon, Distance: 0.1 km
+18- cameroon and niger, Distance: 0.5 km
+19- central african republic and democratic republic of the congo, Distance: 0.6 km
+20- central african republic and sudan, Distance: 0.1 km
+21- china and india, Distance: 0.1 km
+22- china and kazakhstan, Distance: 0.1 km
+23- china and laos, Distance: 0.2 km
+24- china and pakistan, Distance: 0.4 km
+25- china and russia, Distance: 0.3 km
+26- china and tajikistan, Distance: 0.1 km
+27- china and vietnam, Distance: 0.1 km
+28- colombia and panama, Distance: 0.1 km
+29- democratic republic of the congo and south sudan, Distance: 0.2 km
+30- democratic republic of the congo and tanzania, Distance: 0.4 km
+31- egypt and jordan, Distance: 0.7 km
+32- eswatini and mozambique, Distance: 0.1 km
+33- france and italy, Distance: 0.1 km
+34- georgia and russia, Distance: 0.1 km
+35- greece and turkey, Distance: 0.2 km
+36- guinea and ivory coast, Distance: 0.1 km
+37- hungary and ukraine, Distance: 0.1 km
+38- indonesia and timor-leste, Distance: 0.2 km
+39- iran and turkey, Distance: 0.1 km
+40- iran and turkmenistan, Distance: 0.1 km
+41- kazakhstan and turkmenistan, Distance: 0.1 km
+42- kenya and somalia, Distance: 0.2 km
+43- latvia and russia, Distance: 0.6 km
+44- libya and sudan, Distance: 0.1 km
+45- libya and tunisia, Distance: 0.1 km
+46- mexico and united states, Distance: 0.6 km
+47- mozambique and zambia, Distance: 0.1 km
+48- namibia and zambia, Distance: 0.1 km
+49- niger and nigeria, Distance: 0.1 km
+50- north korea and russia, Distance: 0.2 km
+51- norway and russia, Distance: 0.1 km
+52- poland and ukraine, Distance: 0.1 km
+53- russia and ukraine, Distance: 0.2 km
+54- slovakia and ukraine, Distance: 0.1 km
+55- south africa and zimbabwe, Distance: 0.5 km
+56- tanzania and zambia, Distance: 0.1 km
+
+(.venv) C:\Users\xiiil\GitHub\exportle\backend>python find_close_countries.py
+Please enter the name of the JSON file: country_distances.json
+
+Found the following pairs of countries less than 1km apart:
+1- afghanistan and china, Distance: 0.3 km
+2- afghanistan and iran, Distance: 0.1 km
+3- algeria and mauritania, Distance: 0.1 km
+4- angola and congo, Distance: 0.2 km
+5- armenia and iran, Distance: 0.1 km
+6- azerbaijan and russia, Distance: 0.3 km
+7- azerbaijan and turkey, Distance: 0.9 km
+8- bangladesh and myanmar, Distance: 0.1 km
+9- belize and mexico, Distance: 0.1 km
+10- benin and niger, Distance: 0.3 km
+11- bolivia and chile, Distance: 1.0 km
+12- brazil and colombia, Distance: 0.1 km
+13- brazil and suriname, Distance: 0.1 km
+14- brazil and venezuela, Distance: 0.1 km
+15- burkina faso and togo, Distance: 0.1 km
+16- cameroon and central african republic, Distance: 0.1 km
+17- cameroon and chad, Distance: 0.1 km
+18- cameroon and gabon, Distance: 0.1 km
+19- cameroon and niger, Distance: 0.5 km
+20- central african republic and democratic republic of the congo, Distance: 0.6 km
+21- central african republic and sudan, Distance: 0.1 km
+22- china and india, Distance: 0.1 km
+23- china and kazakhstan, Distance: 0.1 km
+24- china and laos, Distance: 0.2 km
+25- china and pakistan, Distance: 0.4 km
+26- china and russia, Distance: 0.3 km
+27- china and tajikistan, Distance: 0.1 km
+28- china and vietnam, Distance: 0.1 km
+29- colombia and panama, Distance: 0.1 km
+30- democratic republic of the congo and south sudan, Distance: 0.2 km
+31- democratic republic of the congo and tanzania, Distance: 0.4 km
+32- egypt and jordan, Distance: 0.7 km
+33- eswatini and mozambique, Distance: 0.1 km
+34- france and italy, Distance: 0.1 km
+35- georgia and russia, Distance: 0.1 km
+36- greece and turkey, Distance: 0.2 km
+37- guinea and ivory coast, Distance: 0.1 km
+38- hungary and ukraine, Distance: 0.1 km
+39- indonesia and timor-leste, Distance: 0.2 km
+40- iran and turkey, Distance: 0.1 km
+41- iran and turkmenistan, Distance: 0.1 km
+42- kazakhstan and turkmenistan, Distance: 0.1 km
+43- kenya and somalia, Distance: 0.2 km
+44- latvia and russia, Distance: 0.6 km
+45- libya and sudan, Distance: 0.1 km
+46- libya and tunisia, Distance: 0.1 km
+47- mexico and united states, Distance: 0.6 km
+48- mozambique and zambia, Distance: 0.1 km
+49- namibia and zambia, Distance: 0.1 km
+50- niger and nigeria, Distance: 0.1 km
+51- north korea and russia, Distance: 0.2 km
+52- norway and russia, Distance: 0.1 km
+53- poland and ukraine, Distance: 0.1 km
+54- russia and ukraine, Distance: 0.2 km
+55- slovakia and ukraine, Distance: 0.1 km
+56- south africa and zimbabwe, Distance: 0.5 km
+57- tanzania and zambia, Distance: 0.1 km
+
+(.venv) C:\Users\xiiil\GitHub\exportle\backend>python find_close_countries.py
+Please enter the name of the JSON file: country_distances.json
+
+Found the following pairs of countries less than 1km apart:
+1- afghanistan and china, Distance: 0.3 km
+2- afghanistan and iran, Distance: 0.1 km
+3- algeria and mauritania, Distance: 0.1 km
+4- angola and congo, Distance: 0.2 km
+5- armenia and iran, Distance: 0.1 km
+6- austria and liechtenstein, Distance: 2.7 km
+7- azerbaijan and russia, Distance: 0.3 km
+8- azerbaijan and turkey, Distance: 0.9 km
+9- bangladesh and myanmar, Distance: 0.1 km
+10- belize and mexico, Distance: 0.1 km
+11- benin and niger, Distance: 0.3 km
+12- bolivia and chile, Distance: 1.0 km
+13- brazil and colombia, Distance: 0.1 km
+14- brazil and suriname, Distance: 0.1 km
+15- brazil and venezuela, Distance: 0.1 km
+16- burkina faso and togo, Distance: 0.1 km
+17- cameroon and central african republic, Distance: 0.1 km
+18- cameroon and chad, Distance: 0.1 km
+19- cameroon and gabon, Distance: 0.1 km
+20- cameroon and niger, Distance: 0.5 km
+21- central african republic and democratic republic of the congo, Distance: 0.6 km
+22- central african republic and south sudan, Distance: 2.0 km
+23- central african republic and sudan, Distance: 0.1 km
+24- china and india, Distance: 0.1 km
+25- china and kazakhstan, Distance: 0.1 km
+26- china and laos, Distance: 0.2 km
+27- china and pakistan, Distance: 0.4 km
+28- china and russia, Distance: 0.3 km
+29- china and tajikistan, Distance: 0.1 km
+30- china and vietnam, Distance: 0.1 km
+31- colombia and panama, Distance: 0.1 km
+32- democratic republic of the congo and south sudan, Distance: 0.2 km
+33- democratic republic of the congo and tanzania, Distance: 0.4 km
+34- egypt and jordan, Distance: 0.7 km
+35- eswatini and mozambique, Distance: 0.1 km
+36- france and italy, Distance: 0.1 km
+37- georgia and russia, Distance: 0.1 km
+38- greece and turkey, Distance: 0.2 km
+39- guinea and ivory coast, Distance: 0.1 km
+40- hungary and ukraine, Distance: 0.1 km
+41- indonesia and timor-leste, Distance: 0.2 km
+42- iran and turkey, Distance: 0.1 km
+43- iran and turkmenistan, Distance: 0.1 km
+44- kazakhstan and turkmenistan, Distance: 0.1 km
+45- kenya and somalia, Distance: 0.2 km
+46- latvia and russia, Distance: 0.6 km
+47- libya and sudan, Distance: 0.1 km
+48- libya and tunisia, Distance: 0.1 km
+49- liechtenstein and switzerland, Distance: 2.4 km
+50- mexico and united states, Distance: 0.6 km
+51- mozambique and zambia, Distance: 0.1 km
+52- namibia and zambia, Distance: 0.1 km
+53- niger and nigeria, Distance: 0.1 km
+54- north korea and russia, Distance: 0.2 km
+55- norway and russia, Distance: 0.1 km
+56- poland and ukraine, Distance: 0.1 km
+57- russia and ukraine, Distance: 0.2 km
+58- slovakia and ukraine, Distance: 0.1 km
+59- south africa and zimbabwe, Distance: 0.5 km
+60- tanzania and zambia, Distance: 0.1 km
+
+(.venv) C:\Users\xiiil\GitHub\exportle\backend>python audit_and_modify.py
+Enter the name of the INPUT JSON file (e.g., distances.json): country_distances.json
+Enter the name for the OUTPUT JSON file (e.g., modified_distances.json): test.json
+--- Audit Log: Distances to be Overwritten ---
+Starting scan of the distance data...
+0001: Changing distance between 'afghanistan' and 'china'. Original: 0.3 km -> New: 0.0 km
+0002: Changing distance between 'afghanistan' and 'iran'. Original: 0.1 km -> New: 0.0 km
+0003: Changing distance between 'albania' and 'serbia'. Original: 29.7 km -> New: 0.0 km
+0004: Changing distance between 'algeria' and 'mauritania'. Original: 0.1 km -> New: 0.0 km
+0005: Changing distance between 'andorra' and 'france'. Original: 11.0 km -> New: 0.0 km
+0006: Changing distance between 'andorra' and 'spain'. Original: 10.8 km -> New: 0.0 km
+0007: Changing distance between 'angola' and 'congo'. Original: 0.2 km -> New: 0.0 km
+0008: Changing distance between 'armenia' and 'iran'. Original: 0.1 km -> New: 0.0 km
+0009: Changing distance between 'austria' and 'liechtenstein'. Original: 2.7 km -> New: 0.0 km
+0010: Changing distance between 'azerbaijan' and 'russia'. Original: 0.3 km -> New: 0.0 km
+0011: Changing distance between 'azerbaijan' and 'turkey'. Original: 0.9 km -> New: 0.0 km
+0012: Changing distance between 'bangladesh' and 'myanmar'. Original: 0.1 km -> New: 0.0 km
+0013: Changing distance between 'belize' and 'mexico'. Original: 0.1 km -> New: 0.0 km
+0014: Changing distance between 'benin' and 'niger'. Original: 0.3 km -> New: 0.0 km
+0015: Changing distance between 'bolivia' and 'chile'. Original: 1.0 km -> New: 0.0 km
+0016: Changing distance between 'brazil' and 'colombia'. Original: 0.1 km -> New: 0.0 km
+0017: Changing distance between 'brazil' and 'suriname'. Original: 0.1 km -> New: 0.0 km
+0018: Changing distance between 'brazil' and 'venezuela'. Original: 0.1 km -> New: 0.0 km
+0019: Changing distance between 'burkina faso' and 'togo'. Original: 0.1 km -> New: 0.0 km
+0020: Changing distance between 'cameroon' and 'central african republic'. Original: 0.1 km -> New: 0.0 km
+0021: Changing distance between 'cameroon' and 'chad'. Original: 0.1 km -> New: 0.0 km
+0022: Changing distance between 'cameroon' and 'gabon'. Original: 0.1 km -> New: 0.0 km
+0023: Changing distance between 'cameroon' and 'niger'. Original: 0.5 km -> New: 0.0 km
+0024: Changing distance between 'central african republic' and 'cameroon'. Original: 0.1 km -> New: 0.0 km
+0025: Changing distance between 'central african republic' and 'democratic republic of the congo'. Original: 0.6 km -> New: 0.0 km
+0026: Changing distance between 'central african republic' and 'south sudan'. Original: 2.0 km -> New: 0.0 km
+0027: Changing distance between 'central african republic' and 'sudan'. Original: 0.1 km -> New: 0.0 km
+0028: Changing distance between 'chad' and 'cameroon'. Original: 0.1 km -> New: 0.0 km
+0029: Changing distance between 'chile' and 'bolivia'. Original: 1.0 km -> New: 0.0 km
+0030: Changing distance between 'china' and 'afghanistan'. Original: 0.3 km -> New: 0.0 km
+0031: Changing distance between 'china' and 'india'. Original: 0.1 km -> New: 0.0 km
+0032: Changing distance between 'china' and 'kazakhstan'. Original: 0.1 km -> New: 0.0 km
+0033: Changing distance between 'china' and 'laos'. Original: 0.2 km -> New: 0.0 km
+0034: Changing distance between 'china' and 'pakistan'. Original: 0.4 km -> New: 0.0 km
+0035: Changing distance between 'china' and 'russia'. Original: 0.3 km -> New: 0.0 km
+0036: Changing distance between 'china' and 'tajikistan'. Original: 0.1 km -> New: 0.0 km
+0037: Changing distance between 'china' and 'vietnam'. Original: 0.1 km -> New: 0.0 km
+0038: Changing distance between 'colombia' and 'brazil'. Original: 0.1 km -> New: 0.0 km
+0039: Changing distance between 'colombia' and 'panama'. Original: 0.1 km -> New: 0.0 km
+0040: Changing distance between 'congo' and 'angola'. Original: 0.2 km -> New: 0.0 km
+0041: Changing distance between 'croatia' and 'italy'. Original: 11.9 km -> New: 0.0 km
+0042: Changing distance between 'democratic republic of the congo' and 'central african republic'. Original: 0.6 km -> New: 0.0 km
+0043: Changing distance between 'democratic republic of the congo' and 'south sudan'. Original: 0.2 km -> New: 0.0 km
+0044: Changing distance between 'democratic republic of the congo' and 'tanzania'. Original: 0.4 km -> New: 0.0 km
+0045: Changing distance between 'denmark' and 'sweden'. Original: 10.7 km -> New: 0.0 km
+0046: Changing distance between 'egypt' and 'jordan'. Original: 0.7 km -> New: 0.0 km
+0047: Changing distance between 'egypt' and 'saudi arabia'. Original: 11.2 km -> New: 0.0 km
+0048: Changing distance between 'eswatini' and 'mozambique'. Original: 0.1 km -> New: 0.0 km
+0049: Changing distance between 'france' and 'andorra'. Original: 11.0 km -> New: 0.0 km
+0050: Changing distance between 'france' and 'italy'. Original: 0.1 km -> New: 0.0 km
+0051: Changing distance between 'france' and 'monaco'. Original: 3.3 km -> New: 0.0 km
+0052: Changing distance between 'gabon' and 'cameroon'. Original: 0.1 km -> New: 0.0 km
+0053: Changing distance between 'georgia' and 'russia'. Original: 0.1 km -> New: 0.0 km
+0054: Changing distance between 'greece' and 'turkey'. Original: 0.2 km -> New: 0.0 km
+0055: Changing distance between 'guinea' and 'ivory coast'. Original: 0.1 km -> New: 0.0 km
+0056: Changing distance between 'hungary' and 'ukraine'. Original: 0.1 km -> New: 0.0 km
+0057: Changing distance between 'india' and 'china'. Original: 0.1 km -> New: 0.0 km
+0058: Changing distance between 'indonesia' and 'timor-leste'. Original: 0.2 km -> New: 0.0 km
+0059: Changing distance between 'iran' and 'afghanistan'. Original: 0.1 km -> New: 0.0 km
+0060: Changing distance between 'iran' and 'armenia'. Original: 0.1 km -> New: 0.0 km
+0061: Changing distance between 'iran' and 'turkey'. Original: 0.1 km -> New: 0.0 km
+0062: Changing distance between 'iran' and 'turkmenistan'. Original: 0.1 km -> New: 0.0 km
+0063: Changing distance between 'israel' and 'saudi arabia'. Original: 16.7 km -> New: 0.0 km
+0064: Changing distance between 'italy' and 'croatia'. Original: 11.9 km -> New: 0.0 km
+0065: Changing distance between 'italy' and 'france'. Original: 0.1 km -> New: 0.0 km
+0066: Changing distance between 'italy' and 'monaco'. Original: 3.5 km -> New: 0.0 km
+0067: Changing distance between 'ivory coast' and 'guinea'. Original: 0.1 km -> New: 0.0 km
+0068: Changing distance between 'jordan' and 'egypt'. Original: 0.7 km -> New: 0.0 km
+0069: Changing distance between 'kazakhstan' and 'china'. Original: 0.1 km -> New: 0.0 km
+0070: Changing distance between 'kazakhstan' and 'mongolia'. Original: 29.9 km -> New: 0.0 km
+0071: Changing distance between 'kazakhstan' and 'turkmenistan'. Original: 0.1 km -> New: 0.0 km
+0072: Changing distance between 'kenya' and 'somalia'. Original: 0.2 km -> New: 0.0 km
+0073: Changing distance between 'laos' and 'china'. Original: 0.2 km -> New: 0.0 km
+0074: Changing distance between 'latvia' and 'russia'. Original: 0.6 km -> New: 0.0 km
+0075: Changing distance between 'libya' and 'sudan'. Original: 0.1 km -> New: 0.0 km
+0076: Changing distance between 'libya' and 'tunisia'. Original: 0.1 km -> New: 0.0 km
+0077: Changing distance between 'liechtenstein' and 'austria'. Original: 2.7 km -> New: 0.0 km
+0078: Changing distance between 'liechtenstein' and 'switzerland'. Original: 2.4 km -> New: 0.0 km
+0079: Changing distance between 'malaysia' and 'singapore'. Original: 11.0 km -> New: 0.0 km
+0080: Changing distance between 'mauritania' and 'algeria'. Original: 0.1 km -> New: 0.0 km
+0081: Changing distance between 'mauritania' and 'morocco'. Original: 9.9 km -> New: 0.0 km
+0082: Changing distance between 'mexico' and 'belize'. Original: 0.1 km -> New: 0.0 km
+0083: Changing distance between 'mexico' and 'united states'. Original: 0.6 km -> New: 0.0 km
+0084: Changing distance between 'monaco' and 'france'. Original: 3.3 km -> New: 0.0 km
+0085: Changing distance between 'monaco' and 'italy'. Original: 3.5 km -> New: 0.0 km
+0086: Changing distance between 'mongolia' and 'kazakhstan'. Original: 29.9 km -> New: 0.0 km
+0087: Changing distance between 'morocco' and 'mauritania'. Original: 9.9 km -> New: 0.0 km
+0088: Changing distance between 'morocco' and 'spain'. Original: 21.5 km -> New: 0.0 km
+0089: Changing distance between 'mozambique' and 'eswatini'. Original: 0.1 km -> New: 0.0 km
+0090: Changing distance between 'mozambique' and 'zambia'. Original: 0.1 km -> New: 0.0 km
+0091: Changing distance between 'myanmar' and 'bangladesh'. Original: 0.1 km -> New: 0.0 km
+0092: Changing distance between 'namibia' and 'zambia'. Original: 0.1 km -> New: 0.0 km
+0093: Changing distance between 'namibia' and 'zimbabwe'. Original: 21.5 km -> New: 0.0 km
+0094: Changing distance between 'niger' and 'benin'. Original: 0.3 km -> New: 0.0 km
+0095: Changing distance between 'niger' and 'cameroon'. Original: 0.5 km -> New: 0.0 km
+0096: Changing distance between 'niger' and 'nigeria'. Original: 0.1 km -> New: 0.0 km
+0097: Changing distance between 'nigeria' and 'niger'. Original: 0.1 km -> New: 0.0 km
+0098: Changing distance between 'north korea' and 'russia'. Original: 0.2 km -> New: 0.0 km
+0099: Changing distance between 'norway' and 'russia'. Original: 0.1 km -> New: 0.0 km
+0100: Changing distance between 'pakistan' and 'china'. Original: 0.4 km -> New: 0.0 km
+0101: Changing distance between 'pakistan' and 'tajikistan'. Original: 25.7 km -> New: 0.0 km
+0102: Changing distance between 'panama' and 'colombia'. Original: 0.1 km -> New: 0.0 km
+0103: Changing distance between 'poland' and 'ukraine'. Original: 0.1 km -> New: 0.0 km
+0104: Changing distance between 'russia' and 'azerbaijan'. Original: 0.3 km -> New: 0.0 km
+0105: Changing distance between 'russia' and 'china'. Original: 0.3 km -> New: 0.0 km
+0106: Changing distance between 'russia' and 'georgia'. Original: 0.1 km -> New: 0.0 km
+0107: Changing distance between 'russia' and 'latvia'. Original: 0.6 km -> New: 0.0 km
+0108: Changing distance between 'russia' and 'north korea'. Original: 0.2 km -> New: 0.0 km
+0109: Changing distance between 'russia' and 'norway'. Original: 0.1 km -> New: 0.0 km
+0110: Changing distance between 'russia' and 'ukraine'. Original: 0.2 km -> New: 0.0 km
+0111: Changing distance between 'saudi arabia' and 'egypt'. Original: 11.2 km -> New: 0.0 km
+0112: Changing distance between 'saudi arabia' and 'israel'. Original: 16.7 km -> New: 0.0 km
+0113: Changing distance between 'serbia' and 'albania'. Original: 29.7 km -> New: 0.0 km
+0114: Changing distance between 'singapore' and 'malaysia'. Original: 11.0 km -> New: 0.0 km
+0115: Changing distance between 'slovakia' and 'ukraine'. Original: 0.1 km -> New: 0.0 km
+0116: Changing distance between 'somalia' and 'kenya'. Original: 0.2 km -> New: 0.0 km
+0117: Changing distance between 'south africa' and 'zimbabwe'. Original: 0.5 km -> New: 0.0 km
+0118: Changing distance between 'south sudan' and 'central african republic'. Original: 2.0 km -> New: 0.0 km
+0119: Changing distance between 'south sudan' and 'democratic republic of the congo'. Original: 0.2 km -> New: 0.0 km
+0120: Changing distance between 'spain' and 'andorra'. Original: 10.8 km -> New: 0.0 km
+0121: Changing distance between 'spain' and 'morocco'. Original: 21.5 km -> New: 0.0 km
+0122: Changing distance between 'sudan' and 'central african republic'. Original: 0.1 km -> New: 0.0 km
+0123: Changing distance between 'sudan' and 'libya'. Original: 0.1 km -> New: 0.0 km
+0124: Changing distance between 'suriname' and 'brazil'. Original: 0.1 km -> New: 0.0 km
+0125: Changing distance between 'sweden' and 'denmark'. Original: 10.7 km -> New: 0.0 km
+0126: Changing distance between 'switzerland' and 'liechtenstein'. Original: 2.4 km -> New: 0.0 km
+0127: Changing distance between 'tajikistan' and 'china'. Original: 0.1 km -> New: 0.0 km
+0128: Changing distance between 'tajikistan' and 'pakistan'. Original: 25.7 km -> New: 0.0 km
+0129: Changing distance between 'tanzania' and 'democratic republic of the congo'. Original: 0.4 km -> New: 0.0 km
+0130: Changing distance between 'tanzania' and 'zambia'. Original: 0.1 km -> New: 0.0 km
+0131: Changing distance between 'timor-leste' and 'indonesia'. Original: 0.2 km -> New: 0.0 km
+0132: Changing distance between 'togo' and 'burkina faso'. Original: 0.1 km -> New: 0.0 km
+0133: Changing distance between 'trinidad and tobago' and 'venezuela'. Original: 12.3 km -> New: 0.0 km
+0134: Changing distance between 'tunisia' and 'libya'. Original: 0.1 km -> New: 0.0 km
+0135: Changing distance between 'turkey' and 'azerbaijan'. Original: 0.9 km -> New: 0.0 km
+0136: Changing distance between 'turkey' and 'greece'. Original: 0.2 km -> New: 0.0 km
+0137: Changing distance between 'turkey' and 'iran'. Original: 0.1 km -> New: 0.0 km
+0138: Changing distance between 'turkmenistan' and 'iran'. Original: 0.1 km -> New: 0.0 km
+0139: Changing distance between 'turkmenistan' and 'kazakhstan'. Original: 0.1 km -> New: 0.0 km
+0140: Changing distance between 'ukraine' and 'hungary'. Original: 0.1 km -> New: 0.0 km
+0141: Changing distance between 'ukraine' and 'poland'. Original: 0.1 km -> New: 0.0 km
+0142: Changing distance between 'ukraine' and 'russia'. Original: 0.2 km -> New: 0.0 km
+0143: Changing distance between 'ukraine' and 'slovakia'. Original: 0.1 km -> New: 0.0 km
+0144: Changing distance between 'united states' and 'mexico'. Original: 0.6 km -> New: 0.0 km
+0145: Changing distance between 'venezuela' and 'brazil'. Original: 0.1 km -> New: 0.0 km
+0146: Changing distance between 'venezuela' and 'trinidad and tobago'. Original: 12.3 km -> New: 0.0 km
+0147: Changing distance between 'vietnam' and 'china'. Original: 0.1 km -> New: 0.0 km
+0148: Changing distance between 'zambia' and 'mozambique'. Original: 0.1 km -> New: 0.0 km
+0149: Changing distance between 'zambia' and 'namibia'. Original: 0.1 km -> New: 0.0 km
+0150: Changing distance between 'zambia' and 'tanzania'. Original: 0.1 km -> New: 0.0 km
+0151: Changing distance between 'zimbabwe' and 'namibia'. Original: 21.5 km -> New: 0.0 km
+0152: Changing distance between 'zimbabwe' and 'south africa'. Original: 0.5 km -> New: 0.0 km
+
+--- End of Audit Log ---
+
+Successfully saved all modifications to 'test.json'.
+Total number of distances overwritten: 152
+
+(.venv) C:\Users\xiiil\GitHub\exportle\backend>python reverse_directions.py
+--- Geographic Direction Reverser ---
+Enter the name of the input JSON file: country_directions.jsn
+Enter the name for the output JSON file: test.json
+
+Error: The file 'country_directions.jsn' was not found. Please make sure it's in the same folder as the script.
+
+(.venv) C:\Users\xiiil\GitHub\exportle\backend>python reverse_directions.py
+--- Geographic Direction Reverser ---
+Enter the name of the input JSON file: country_directions.json
+Enter the name for the output JSON file: test.json
+
+Processing data...
+
+Success! The reversed data has been saved to 'test.json'.
+
+(.venv) C:\Users\xiiil\GitHub\exportle\backend>
